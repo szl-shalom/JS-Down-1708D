@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        #box {
+            width: 800px;
+            background: #ccc;
+            margin: 0 auto;
+            /* height: 500px; */
+            padding: 50px;
+        }
+        
+        .progress {
+            width: 800px;
+            height: 30px;
+            background: #fff;
+            border-radius: 5px 0 0 5px;
+            margin-top: 10px;
+            position: relative;
+        }
+        
+        .progress .mask {
+            /* width: 700px; */
+            height: 30px;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .progress .con {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            background: rgba(0, 0, 0, .3);
+            float: left;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #fff;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .progress .num {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            position: absolute;
+            font-size: 12px;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <div class="progress">
+            <div class="mask"></div>
+            <div class="con">HTML</div>
+            <div class="num">70%</div>
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+    <script>
+        new Progress({
+            data: data,
+            box: '#box'
+        })
+    </script>
+</body>
+
+</html>

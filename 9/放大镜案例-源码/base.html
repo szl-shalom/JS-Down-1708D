@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+    <style>
+        *{margin:0; padding:0;}
+        img{display: block;}
+        .app{
+            padding:20px 20px;
+        }
+        .app>div{
+            float: left; margin-right:20px; 
+        }
+        .smallImg{
+            width:240px; height:112.5px; position: relative;
+        }
+        .smallImg img{
+            width:100%; height:100%;
+        }
+        .moveBox{
+            width:50px; height:50px; background-color:#fff; opacity:0.5; cursor:move; position:absolute; left:0; top:0; 
+        }
+        .rightSection{
+            position: relative; width: 200px; height: 200px; overflow: hidden;
+        }
+        .rightSection img{
+            position:absolute; left:0; top:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="leftSection">
+            <div class="smallImg">
+                <img src="./images/ad_4.jpg" alt="">
+                <div class="moveBox"></div>
+            </div>
+        </div>
+        <div class="rightSection">
+            <img id="bigImg" src="./images/ad_4.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var oSmallImg = document.getElementsByClassName('smallImg')[0];
+        var oMoveBox = document.getElementsByClassName('moveBox')[0];
+        var oBigImg = document.getElementById('bigImg');
+        oSmallImg.addEventListener('mousemove',function(ev){
+            var left = ev.clientX - oSmallImg.offsetLeft - oMoveBox.offsetWidth/2;
+            var top = ev.clientY - oSmallImg.offsetTop - oMoveBox.offsetHeight/2;
+            if(left < 0){
+                left = 0;
+            }
+            if(top < 0){
+                top = 0;
+            }
+            if(left >= oSmallImg.offsetWidth - oMoveBox.offsetWidth){
+                left = oSmallImg.offsetWidth - oMoveBox.offsetWidth
+            }
+            if(top >= oSmallImg.offsetHeight - oMoveBox.offsetHeight){
+                top = oSmallImg.offsetHeight - oMoveBox.offsetHeight
+            }
+            oMoveBox.style.left = left + 'px';
+            oMoveBox.style.top = top + 'px';
+            oBigImg.style.left = 4 * -left + 'px';
+            oBigImg.style.top = 4 * -top + 'px';
+        },false);
+    </script>
+</body>
+</html>

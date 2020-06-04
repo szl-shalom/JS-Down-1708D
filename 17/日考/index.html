@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            padding-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./data.js"></script>
+
+    <!-- <div>
+        查抄
+        <div>
+            12312
+            <div>
+                123123
+                div
+            </div>
+        </div>
+    </div> -->
+    <script>
+        // // 方式一 利用map+join
+        // function render(data) {
+        //     return data.map(function (item) {
+        //         return ` <div>
+        //                     ${item.title}
+        //                     ${item.children ? render(item.children) : ""}
+        //                 </div>`
+        //     }).join("")
+        // }
+        // document.body.innerHTML = render(data)
+
+        //  数据的深度克隆
+
+        function copyData(data) {
+            // 排出基本数据类型 以及function
+            if (typeof data !== "object") {
+                return data
+            }
+            // 判断是数组还是对象
+            var flag = Object.prototype.toString.call(data) === "[object Object]"
+            var o = flag ? {} : []
+            // 复制数据
+            if (flag) {
+                // 复制对象
+                for (var key in data) {
+                    o[key] = copyData(data[key])
+                }
+
+            } else {
+                // 复制数组
+                data.forEach(function (item) {
+                    o.push(copyData(item))
+                })
+            }
+            return o
+        }
+
+        var data = 123
+        console.log(copyData(data))
+
+        console.log(Object.prototype.toString.call(""))
+
+
+
+
+    </script>
+</body>
+
+</html>

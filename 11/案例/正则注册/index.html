@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            width: 400px;
+            margin: 50px auto;
+        }
+
+        .wrap>div {
+            margin-top: 50px;
+            width: 100%;
+        }
+
+
+        .wrap>div>span {
+            display: none;
+        }
+
+        .wrap>div>span.active {
+            display: inline;
+        }
+
+        .drag-check {
+            border: 1px solid #ccc;
+            height: 30px;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .mask {
+            float: left;
+            width: 0;
+            height: 30px;
+            background: red;
+            text-align: center;
+            line-height: 30px;
+            position: relative;
+        }
+
+        .box {
+            float: left;
+            height: 30px;
+            width: 30px;
+            background: skyblue;
+            position: absolute;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div>
+            <input type="text" class="iphone" placeholder="请输入手机号">
+            <span class="yes">✔</span>
+            <span class="no">✖</span>
+        </div>
+
+        <div class="drag-check">
+            <div class="mask"></div>
+            <div class="box">》</div>
+        </div>
+
+
+        <div>
+            <input type="text" class="userCode">
+            <button class="getCode">点击获取验证码</button>
+            <b class="code">1234</b>
+        </div>
+
+        <button class="regist">注册</button>
+    </div>
+
+
+    <script>
+        var regIpone = /^1[3-9]\d{9}$/,
+            iphone = document.querySelector(".iphone"),
+            flagIphone,
+            flagDrag,
+            flagD,
+            pos,
+            yes = document.querySelector(".yes"),
+            no = document.querySelector('.no'),
+            box = document.querySelector(".box"),
+            dragCheck = document.querySelector(".drag-check"),
+            mask = document.querySelector(".mask"),
+            userCode = document.querySelector(".userCode"),
+            code = document.querySelector(".code"),
+            getCode = document.querySelector(".getCode"),
+            regist = document.querySelector(".regist")
+
+        iphone.addEventListener("blur", function () {
+            flagIphone = regIpone.test(iphone.value)
+            if (flagIphone) {
+                yes.classList.add("active")
+                no.classList.remove("active")
+            } else {
+                yes.classList.remove("active")
+                no.classList.add("active")
+
+            }
+        })
+
+        box.addEventListener("mousedown", function (e) {
+            flagDrag = true;
+            pos = {
+                x: e.offsetX,
+            }
+            // console.log(2)
+        })
+
+        document.addEventListener("mousemove", function (e) {
+            if (flagDrag) {
+                var x = e.pageX - pos.x - dragCheck.offsetLeft;
+                if (x < 0) {
+                    x = 0
+                }
+                if (x > dragCheck.offsetWidth - box.offsetWidth) {
+                    x = dragCheck.offsetWidth - box.offsetWidth
+                }
+
+
+                box.style.left = x + "px"
+                mask.style.width = x + "px"
+            }
+        })
+        document.addEventListener("mouseup", function () {
+            if (flagDrag) {
+                flagDrag = false
+                if (mask.offsetWidth === dragCheck.offsetWidth - box.offsetWidth) {
+                    mask.innerHTML = "验证通过"
+                    flagD = true
+                } else {
+                    box.style.transition = "all .2s"
+                    mask.style.transition = "all .2s"
+                    box.style.left = 0
+                    mask.style.width = 0
+                    setTimeout(function () {
+                        box.style.transition = ""
+                        mask.style.transition = ""
+                    }, 200)
+                }
+
+
+            }
+        })
+
+        getCode.addEventListener("click", function () {
+            var num = Math.random().toString(36).substr(2, 4)
+            code.innerHTML = num
+        })
+
+        regist.addEventListener("click", function () {
+            if (flagIphone && flagD && userCode.value === code.innerHTML) {
+                alert("注册成功")
+            } else {
+                alert("注册失败")
+
+            }
+        })
+
+
+        iphone.focus()
+        iphone.blur()
+
+
+
+
+    </script>
+</body>
+
+</html>

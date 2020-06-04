@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>还剩<span class="count">140</span>字</h3>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button class="submit">提交</button>
+
+    <ul class="list">
+        <li><span>内容</span> <button>删除</button></li>
+        <li><span>内容</span> <button>删除</button></li>
+
+        <li><span>内容</span> <button>删除</button></li>
+    </ul>
+
+    <script>
+        var textarea = document.querySelector("textarea"),
+            count = document.querySelector(".count"),
+            submit = document.querySelector(".submit"),
+            list = document.querySelector(".list");
+
+        textarea.addEventListener("input", function () {
+            count.innerHTML = 140 - textarea.value.length
+        })
+
+
+        submit.addEventListener("click", function () {
+            if (textarea.value == "") {
+                alert("不能为空")
+            } else {
+                // 添加
+                // <li><span>内容</span> <button>删除</button></li>
+                var li = document.createElement("li")
+                li.innerHTML = `<span>${textarea.value}</span> <button>删除</button>`
+                list.insertBefore(li, list.firstElementChild)
+            }
+        })
+
+        list.addEventListener("click", function (e) {
+            // console.log(e)
+            var tar = e.target //获取事件源 
+            // 判断事件是不是button按钮
+            if (tar.nodeName === "BUTTON") {
+                // console.log("123")
+                // 删除
+                tar.parentNode.parentNode.removeChild(tar.parentNode)
+
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

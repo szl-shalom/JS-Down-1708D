@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background: black;
+}
+
+.wrap {
+    width: 800px;
+    height: 400px;
+    margin: 100px auto;
+    background: white;
+    /* padding: 2px; */
+}
+
+.wrap .left {
+    float: left;
+    width: 120px;
+    text-align: center;
+    height: 100px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.wrap .left ul {
+    width: 100%;
+}
+
+.wrap .left ul li {
+    line-height: 50px;
+    border: 1px solid #ccc;
+    margin: 2px;
+}
+
+.wrap .left ul li.active {
+    background-color: skyblue;
+}
+
+.wrap .right {
+    width: 680px;
+    float: left;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.wrap .right h1 {
+    background: red;
+    text-align: center;
+}
+
+.wrap .right ul {
+    width: 100%;
+    position: relative;
+}
+
+.wrap .right ul li dl {
+    padding: 10px;
+    height: 100px;
+}
+
+.wrap .right ul li dl dd {
+    width: 80px;
+    height: 80px;
+    float: left;
+}
+
+.wrap .right ul li dl dd img {
+    width: 100%;
+    height: 100%;
+}
+
+.wrap .right ul li dl dt {
+    float: left;
+    width: 540px;
+    margin-left: 20px;
+}
+
+.wrap .right ul li{
+    border: 1px solid #ccc;
+}

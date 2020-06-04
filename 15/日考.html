@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = "background-size-h"  // backgroundSize
+        var str1 = "background-position-x"
+        // 第一题
+        function toLitterCase(str) {
+            return str.replace(/-([a-z])/g, function ($, $1) {
+                return $1.toUpperCase()
+            })
+        }
+        // 第二题
+        var arr = ["SB", "网站"]
+
+        var reg = new RegExp(arr.join("|"), "g")
+       
+
+
+        var str = "张三S.B！！！"
+
+        var res = str.replace(reg, function ($) {
+            console.log($)
+            var str = ""
+            for (var i = 0; i < $.length; i++) {
+                str += "*"
+            }
+            return str
+        })
+
+        console.log(res)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wrap {
+    width: 500px;
+    margin: 50px auto;
+}
+
+.calendar {
+    width: 350px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #ccc;
+    margin-top: 50px;
+    position: relative;
+}
+
+.calendar input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+}
+
+.rili {
+    position: absolute;
+    background:wheat;
+    width: 100%;
+    z-index: 999;
+}
+
+.rili .header {
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+}
+
+.rili .header .prev {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    border: 0;
+    
+    line-height: 20px;
+}
+
+.rili .header .next {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    border: 0;
+    
+    line-height: 20px;
+}
+
+.rili .content {
+    width: 100%;
+    font-size: 12px;
+}
+
+.rili .content ul li {
+    float: left;
+    width: 50px;
+    text-align: center;
+    line-height: 36px;
+    color: #999;
+    cursor: no-drop
+}
+
+.rili .content ul li.active {
+   color: black;
+   cursor: pointer;
+}

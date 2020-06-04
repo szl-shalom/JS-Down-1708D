@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="" id="pro">
+        <option value="">河北省</option>
+        <option value="">河南省</option>
+
+    </select>
+
+    <select name="" id="city"></select>
+
+    <select name="" id="area"></select>
+    <script>
+        var data = [{
+            name: "河北省",
+            children: [{
+                name: "保定",
+                children: ["新市区", "南市区"]
+            }, {
+                name: "承德",
+                children: ["避暑山庄", "蛤蟆石", "千手观音"]
+            }]
+        }, {
+            name: "河南省",
+            children: [{
+                name: "洛阳市",
+                children: ["1", "2"]
+            }, {
+                name: "郑州市",
+                children: ["3", "4", "5"]
+            }]
+        }]
+        var pro = document.querySelector("#pro"),
+            city = document.querySelector("#city"),
+            area = document.querySelector("#area");
+        function render(el, arr) {
+            el.innerHTML = arr.map(function (item, index) {
+                return `<option value="${index}">${item.name}</option>`
+            }).join("")
+
+        }
+        render(pro, data)   
+        console.log(data)
+        pro.addEventListener("change", function () {
+            var index = pro.value
+
+            render(city,data[index].children)
+        })
+        var arr = [1, 2, 3, 4]
+
+        
+    </script>
+
+
+
+
+
+</body>
+
+</html>

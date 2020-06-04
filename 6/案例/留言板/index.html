@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="add">添加</button>
+        <ul class="list">
+            <li>
+                <h3>1231231</h3>
+                <p>
+                    内容
+                </p>
+            </li>
+
+            <li>
+                <h3>1231231</h3>
+                <p>23123</p>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="mask-box"></div>
+    <div class="mask">
+        <span class="close">x</span>
+        <h4>姓名:</h4>
+        <input type="text" class="username">
+        <h4> 内容 </h4>
+        <textarea name="" id="" cols="30" rows="10" class="con"></textarea>
+        <button class="submit">提交</button>
+        <button class="close">取消</button>
+    </div>
+
+    <script>
+        var add = document.querySelector(".add"),
+            mask = document.querySelector(".mask"),
+            maskBox = document.querySelector(".mask-box"),
+            username = document.querySelector(".username"),
+            con = document.querySelector(".con"),
+            list = document.querySelector(".list")
+
+        add.addEventListener("click", function () {
+            mask.classList.add("active")
+            maskBox.classList.add("active")
+        })
+
+        mask.addEventListener("click", function (e) {
+            var tar = e.target //获取事件源
+
+            if (tar.className === "close") {
+                mask.classList.remove("active")
+                maskBox.classList.remove("active")
+            }
+
+            if (tar.className === "submit") {
+
+                console.log(username.value)
+                console.log(con.value)
+
+                // var html = ` <li>
+                //                 <h3>${username.value}</h3>
+                //                 <p>${con.value}</p>
+                //             </li>`
+
+                // list.innerHTML += html
+
+                var li = document.createElement("li")
+                li.innerHTML = ` <h3>${username.value}</h3>
+                                 <p>${con.value}</p>`
+
+                list.appendChild(li)
+                mask.classList.remove("active")
+                maskBox.classList.remove("active")
+            }
+        })
+
+    console.log(document.body.cloneNode())
+    </script>
+</body>
+
+</html>

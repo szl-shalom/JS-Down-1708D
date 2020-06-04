@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<button id="btn">点我</button>
+	<script>
+		// DOM 2级事件 ==> 事件监听器 ==> 事件侦听器
+		// 语法:
+		// 绑定事件的元素.addEventListener('事件名',执行函数,布尔值);
+		// 默认是false(冒泡)
+		// true:捕获
+
+		var btn = document.querySelector("button")
+
+
+		// btn.onclick = function () {
+		// 	alert("我被点击了！！！")
+		// }
+
+
+		// btn.onclick = function () {
+		// 	alert("123123124")
+		// }
+
+		btn.addEventListener("click", function () {
+			alert("我被点击了")
+		})
+
+		btn.addEventListener("click", function () {
+			alert("123123124")
+		})
+
+		// 区别一  dom0只能加一个相同事件  后面的事件会覆盖前面相同的事件  dom2 可以添加多个相同事件 依次触发
+		// 区别二  dom0只有目标 +冒泡阶段
+	</script>
+</body>
+
+</html>

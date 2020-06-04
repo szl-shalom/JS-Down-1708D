@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ?iphone=13171996138&pad=123123 -->
+    手机号<input type="text"> </br>
+    密码<input type="text"></br>
+    <button>点击跳转页面</button>
+
+    <script>
+        var btn = document.querySelector("button"),
+            ipts = [...document.querySelectorAll("input")]
+
+        btn.addEventListener("click", function () {
+            var ipVal = ipts[0].value,
+                pwdVal = ipts[1].value;
+
+            location.href = `./index1.html?iphone=${ipVal}&pwd=${pwdVal}`
+        })
+    </script>
+</body>
+
+</html>

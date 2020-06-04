@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./自测.css">
+</head>
+
+<body>
+    <input type="text" placeholder="请选择">
+    <div class="box">
+        <div class="top">
+            <p>常用工具类型</p>
+            <ol>
+                <!-- <li>清炖狮子头</li>
+                <li>卤肉饭</li>
+                <li>飘香鲫鱼</li>
+                <li>臭鲑鱼</li> -->
+            </ol>
+        </div>
+        <div class="tbody">
+            <div class="left">
+                <ul>
+                    <!-- <li></li> -->
+                </ul>
+            </div>
+            <div class="center">
+                <ul>
+                    <!-- <li></li> -->
+                </ul>
+            </div>
+            <div class="right">
+                <ul>
+                    <!-- <li><input type="checkbox"><span></span></li> -->
+                </ul>
+            </div>
+            <div class="you">
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./data.js"></script>
+
+
+    <script>
+        var head = document.querySelector(".top")
+        var ol = head.querySelector("ol")
+        var left = document.querySelector(".left")
+        var ul = left.querySelector("ul")
+        var center = document.querySelector(".center")
+        var ull = center.querySelector("ul")
+        var right = document.querySelector(".right")
+        var ul2 = right.querySelector("ul")
+        var you = document.querySelector(".you")
+        var indexOne = 0
+        //渲染头部
+        ol.innerHTML = hotJobs.data.map(function (item) {
+            return `<li>${item.name}</li>`
+        }).join("")
+        //渲染第一个盒子
+        ul.innerHTML = jobs.info.map(function (item, index) {
+            return `<li ind=${index} ${index === 0 ? "class=active" :""}>${item.name}</li>`
+        }).join("")
+        //第一个盒子的点击事件
+        ul.onclick = function (e) {
+            var tar = e.target
+            ul.querySelector(".active") ? ul.querySelector(".active").classList.remove("active") : ""
+            tar.classList.add("active")
+            if (tar.nodeName === "LI") {
+                var ind = tar.getAttribute("ind")
+                indexOne = ind
+                //渲染第二个盒子
+                ull.innerHTML = jobs.info[ind].children.map(function (item, index) {
+                    return `<li ind = ${index} ${index===0?"class=active":""}>${item.name}</li>`
+                }).join("")
+            }
+        }
+        //第二个盒子的点击事件
+        center.onclick = function (e) {
+            var tar = e.target
+            if (tar.nodeName === "LI") {
+                var index = tar.getAttribute("ind")
+                ull.querySelector(".active") ? ull.querySelector(".active").classList.remove("active") : ""
+                tar.classList.add("active")
+                //渲染第三个盒子
+                var data = jobs.info[indexOne].children[index].children
+                ul2.innerHTML = data.map(function (item) {
+                    return `<li><input type="checkbox"><span data.id=${item.id}>${item.name}</span></li>`
+                }).join("")
+            }
+        }
+        //第三个盒子的点击事件
+        right.onclick = function (e) {
+            var tar = e.target || window.event.srcElement
+            if (tar.nodeName === "INPUT") {
+                if (tar.checked) {
+                    var el = tar.nextElementSibling.cloneNode(true)
+                    you.appendChild(el)
+                } else {
+                    var data_id = tar.nextElementSibling.getAttribute("data.id")
+                    var spans = [...you.querySelectorAll("span")]
+                    spans.forEach(function (item) {
+                        if (item.getAttribute("data.id") === data_id) {
+                            item.parentNode.removeChild(item)
+                        }
+                    })
+                }
+            }
+        }
+        //第四个盒子的点击事件
+        you.onclick = function (e) {
+            var tar = e.target
+            if (tar.nodeName === "SPAN") {
+                var data_id = tar.getAttribute("data.id")
+                var spans = [...right.querySelectorAll("span")]
+                spans.forEach(function (item) {
+                    if (item.getAttribute("data.id") === data_id) {
+                        item.previousElementSibling.checked = false
+                    }
+                })
+                tar.parentNode.removeChild(tar)
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        text-align: center;
+    }
+
+    div {
+        width: 500px;
+        margin: auto;
+    }
+</style>
+
+<body>
+    <div>
+        <h1>问卷调差</h1>
+        <h2>你的爱好</h2>
+        <hr>
+        <label for=""><input type="checkbox" name="" id="" checked>游泳</label>
+        <label for=""><input type="checkbox" name="" id="">睡觉</label>
+        <label for=""><input type="checkbox" name="" id="">看出</label>
+        <label for=""><input type="checkbox" name="" id="" checked>吃饭</label>
+        <label for=""><input type="checkbox" name="" id="">打球</label>
+        <label for=""><input type="checkbox" name="" id="">卖萌</label>
+
+        <br><br>
+        <button>全选</button>
+        <button>反选</button>
+        <button>不选</button>
+
+        <script>
+            var btns = [...document.querySelectorAll("button")],
+                inputs = [...document.querySelectorAll("input")];
+
+            btns[0].onclick = function () {
+                inputs.forEach(function (item) {
+                    item.checked = true
+                })
+            }
+
+            btns[1].onclick = function () {
+                inputs.forEach(function (item) {
+                    item.checked = !item.checked
+                })
+            }
+            btns[2].onclick = function () {
+                inputs.forEach(function (item) {
+                    item.checked = false
+                })
+            }
+        </script>
+    </div>
+
+</body>
+
+</html>

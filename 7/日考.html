@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="test box hv "></div>
+    <ul id="list">
+        <li class="box"></li>
+        <li class="box bg"></li>
+        <li class="left box"></li>
+    </ul>
+    <script>
+        var list = document.querySelector("#list")
+        function getByClassName(a, b) {
+            return a.nodeType === 1 ? a.getElementsByClassName(b) : document.getElementsByClassName(a)
+        }
+        console.log(getByClassName("box"))
+        console.log(getByClassName(list, "box"))
+    </script>
+</body>
+
+</html>

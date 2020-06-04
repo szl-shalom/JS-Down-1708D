@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+
+    <script>
+        var str = "人生就像一杯茶,只会苦一时，不会苦一辈子，学习也是一样，只会苦一时，会受益一辈子"
+
+        var len = 0
+        var h1 = document.querySelector("h1")
+
+        setInterval(function () {
+            len++
+
+            if (len >= str.length) {
+                len = 0
+            }
+            // 
+            // var html = str.slice(0, len)
+            var html = str.substr(0, len)
+
+            h1.innerHTML = html
+        }, 100)
+
+
+
+
+
+
+
+
+
+        // var len = 0
+        // var h1 = document.querySelector("h1")
+        // setInterval(function () {
+        //     len++
+        //     h1.innerHTML = str.slice(0, len)
+        //     if (len > str.length) {
+        //         len = 0
+        //     }
+        // }, 300)
+
+
+    </script>
+</body>
+
+</html>

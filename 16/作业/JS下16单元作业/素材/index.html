@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="content"></div>
+        <button class="alert">点击弹出</button>
+    </div>
+    <div class="mask"></div>
+    <div class="box">
+        <div class="header">
+            <button>全选</button>
+            <button>清空</button>
+        </div>
+        <div class="con clear">
+            <div class="every">
+                <input type="checkbox">
+                <span>北京</span>
+                <div class="active">
+                    <ul>
+                        <li>
+                            <input type="checkbox">
+                            <span>北京</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>北京</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>北京</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="every">
+                <input type="checkbox">
+                <span>北京</span>
+            </div>
+            <div class="every">
+                <input type="checkbox">
+                <span>北京</span>
+            </div>
+            <div class="every">
+                <input type="checkbox">
+                <span>北京</span>
+            </div>
+            <div class="every">
+                <input type="checkbox">
+                <span>北京</span>
+            </div>
+            <div class="every">
+                <input type="checkbox">
+                <span>北京</span>
+                <div class="active">
+                    <ul>
+                        <li>
+                            <input type="checkbox">
+                            <span>北京</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>北京</span>
+                        </li>
+                        <li>
+                            <input type="checkbox">
+                            <span>北京</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <button class="close">关闭</button>
+            <button>确定</button>
+        </div>
+    </div>
+    <script src="./data.js"></script>
+    <script src="./index.js"></script>
+    <script>
+
+        new City({
+            data: datas,
+        })
+    </script>
+</body>
+
+</html>

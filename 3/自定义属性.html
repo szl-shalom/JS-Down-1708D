@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // var h1 = document.querySelector("h1")
+
+        // // 元素.getAttribute("属性名称") 获取属性
+        // // var num = h1.getAttribute("index")
+
+        // // 元素.setAttribute(属性名, 属性值) 设置属性
+        // h1.setAttribute("data-ID", "123")
+
+
+        // // 元素.removeAttribute("属性名称") 删除属性
+        // h1.removeAttribute("data-ID")
+
+
+        var h1 = document.createElement("h1")
+        h1.innerHTML = "大家好"
+        h1.setAttribute("data-id", 123)
+        h1.classList.add("class")
+        var body = document.body
+        body.appendChild(h1)
+
+
+        h1.parentNode.removeChild(h1)
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日历插件</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="calendar">
+            <input type="text" placeholder="选择入住时间" class="start">
+            <!-- <div class="rili">
+                <div class="header">
+                    <button class="prev">左</button>
+                    <h3><span>2018</span>年<span>6</span>月</h3>
+                    <button class="next">右</button>
+                </div>
+                <div class="content">
+                    <ul class="content-ul">
+                        <li>星期一</li>
+                        <li>星期二</li>
+                        <li>星期三</li>
+                        <li>星期四</li>
+                        <li>星期五</li>
+                        <li>星期六</li>
+                        <li>星期日</li>
+                    </ul>
+                    <ul> 
+                    </ul>
+                </div>
+            </div> -->
+        </div>
+        <div class="calendar">
+            <input type="text" placeholder="选择离开时间" class="end">
+        </div>
+    </div>
+    <!-- <script src="./index.js"></script> -->
+    <script src="./rili.js"></script>
+    <script>
+        new CreateDate({
+            el: ".start"
+        })
+
+        document.querySelector(".start").onchange = function () {
+            console.log(1)
+            new CreateDate({
+                el: ".end",
+                date: new Date(this.value)
+            })
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

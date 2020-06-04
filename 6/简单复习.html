@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>失效</button>
+    <script>
+        // 事件类型
+        // 1 鼠标类事件
+        //      点击  click
+        //      双击  dblclick
+        //      鼠标进入   mouseenter
+        //      鼠标离开   mouseleave
+        //      鼠标悬浮于上方   mouseover
+        //      鼠标离开上方     mouseout
+        // 2 键盘类事件
+        //      键盘按下   keydown
+        //      键盘抬起   keyup
+        //      键盘按下   keypress
+        // 3 表单类事件
+        //      输入   input
+        //      改变   change
+        //      聚焦   focus
+        //      非聚焦 blur
+        // 4 UI事件
+        //      预加载完成  load
+        // 5 滚动事件
+        //      滚动   scroll
+
+        // 事件处理程序
+        // dom0级添加事件
+        // document.onclick = function () {
+
+        // }
+        // dom0级移除事件
+        // dom2级添加事件
+        // document.addEventListener("click", function () {
+
+        // })
+        // dom2级移除事件
+
+
+        // dom0级事件 后面设置事件会覆盖前面设置事件    只支持冒泡
+        // dom2级事件 同一类型事件 依次执行 不会覆盖       支持冒泡和捕获
+
+        // 事件流：是事件的传播机制
+        // 捕获=>目标=>冒泡
+
+        // 事件委托|事件代理
+        // 利用事件冒泡原理，用一个事件管理同一类型
+
+        // 事件对象:
+        // 当事件触发时，浏览器传递给事件驱动函数的第一个参数，它保留着一些事件的基本信息
+
+
+        document.addEventListener("click", fn)
+
+        document.querySelector("button").onclick = function () {
+            document.removeEventListener("click", fn)
+
+        }
+
+
+
+        function fn() {
+            console.log(123)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            /* margin: 0; */
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 400px;
+            height: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        input {
+            display: inline-block;
+            width: 300px;
+            height: 40px;
+        }
+
+        #btn {
+            width: 240px;
+            height: 90px;
+        }
+
+        #btn span {
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin: 10px 5px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            float: left;
+        }
+
+        #btn span.active {
+            background: #ccc;
+        }
+
+        #list {
+            width: 400px;
+            height: 400px;
+            overflow: auto;
+        }
+
+        #list li {
+            width: 400px;
+            height: 80px;
+        }
+
+        #list li:hover {
+            background: #f5f5f5;
+        }
+
+        #list li img {
+            display: block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            float: left;
+        }
+
+        .info {
+            width: 300px;
+            height: 80px;
+            float: left;
+            line-height: 80px;
+            text-indent: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" placeholder="搜索" class="search">
+        <div id="btn">
+            <span class="man">
+                
+            </span>
+            <span class="women">woman</span>
+            <span class="oldMan">成年</span>
+            <span class="youngMan">未成年</span>
+        </div>
+        <ul id="list">
+            <li>
+                <img src="./images/1.webp" alt="">
+                <div class="info"><b>小明</b><span>16</span></div>
+            </li>
+        </ul>
+    </div>
+    <script src="./js/data.js"> </script>
+    <script>
+     
+
+    </script>
+</body>
+
+</html>

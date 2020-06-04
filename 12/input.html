@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            display: none;
+        }
+
+        ul li.active {
+            background: pink;
+        }
+
+        ul.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <ul>
+        <li class="active"> 1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <script>
+        var input = document.querySelector("input"),
+            ul = document.querySelector("ul");
+
+        input.addEventListener("input", function () {
+            if (input.value) {
+                ul.classList.add("active")
+            } else {
+                ul.classList.remove("active")
+            }
+        })
+
+        input.addEventListener("keydown", function (e) {
+            if (e.keyCode === 38) {
+                // 上箭头
+                var li = ul.querySelector(".active")
+                li.classList.remove("active")
+                if (li.previousElementSibling) {
+                    li.previousElementSibling.classList.add("active")
+                } else {
+                    ul.lastElementChild.classList.add("active")
+                }
+            }
+
+            if (e.keyCode === 40) {
+                // 下箭头
+                var li = ul.querySelector(".active")
+                li.classList.remove("active")
+                if (li.nextElementSibling) {
+                    li.nextElementSibling.classList.add("active")
+                } else {
+                    ul.firstElementChild.classList.add("active")
+                }
+            }
+
+            input.value = ul.querySelector(".active").innerHTML
+        })
+
+        document.addEventListener("click", function () {
+            ul.classList.remove("active")
+        })
+
+        ul.addEventListener("click", function (e) {
+            var tar = e.target;
+            if (tar.nodeName === "LI") {
+                input.value = tar.innerHTML
+            }
+        })
+    </script>
+</body>
+
+</html>

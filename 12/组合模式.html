@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 面向对象是一种编程思想
+
+        function Car(color) {
+            this.name = "兰博基尼"
+            this.color = color
+        }
+        // 构造函数原型
+        Car.prototype = {
+            // constructor: Car,
+            init: function () {
+                console.log("123")
+            }
+        }
+
+        var car1 = new Car("红色")
+
+
+        var car2 = new Car("蓝色")
+        // console.log(car1.__proto__ === car2.__proto__)
+
+
+        // var num = {}
+ 
+
+    </script>
+</body>
+
+</html>

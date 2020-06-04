@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            list-style: none;
+        }
+
+        .header li {
+            float: left;
+            width: 120px;
+            line-height: 35px;
+            text-align: center;
+        }
+
+        .header li.active {
+            background: red;
+        }
+
+        .content li {
+            display: none;
+        }
+
+        .content li.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="header">
+        <li class="active" ind="0">1</li>
+        <li ind="1">2</li>
+        <li ind="2">3</li>
+    </ul>
+    </br>
+    <ul class="content">
+        <li class="active" ind="0">内容一</li>
+        <li ind="1">内容二</li>
+        <li ind="2">内容三</li>
+    </ul>
+
+    <script>
+        function Tab() {
+            this.header = document.querySelector(".header")
+            this.content = document.querySelector(".content")
+            this.index = 0
+            this.init()
+        }
+
+        Tab.prototype = {
+            constructor: Tab,
+            init: function () {
+                this.addEvent()
+            },
+            addEvent: function () {
+                var that = this;
+                this.header.addEventListener("click", function (e) {
+                    var tar = e.target
+                    if (tar.nodeName === "LI") {
+                        // 去除原来的类名
+                        that.header.children[that.index].classList.remove("active")
+                        that.content.children[that.index].classList.remove("active")
+                        // 修改下标
+                        that.index = tar.getAttribute("ind")
+                        // 给点击的元素添加类名
+                        that.header.children[that.index].classList.add("active")
+                        that.content.children[that.index].classList.add("active")
+                    }
+                })
+            }
+        }
+
+        new Tab()
+    </script>
+</body>
+
+</html>

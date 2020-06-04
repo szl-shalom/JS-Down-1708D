@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            display: block;
+        }
+
+        /* div {
+            width: 250px;
+            height: 250px;
+            background: red;
+        } */
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <img src="./4.png" alt="">
+    <a href="">求拖</a>
+
+    <h3>大家好</h3>
+
+    <script>
+
+        var pos = null,
+            flag = false,
+            el;
+        document.addEventListener("mousedown", function (e) {
+            e.preventDefault() //阻止默认行为
+            el = e.target; //获取事件源
+            flag = true;  //开启开关变量
+            el.style.position = "absolute"  //设置定位
+            //获取鼠标距离事件源上边距和左边距
+            pos = {
+                x: e.offsetX,
+                y: e.offsetY,
+            }
+
+        })
+        document.addEventListener("mousemove", function (e) {
+            // 判断开关变量是否为true
+            if (flag) {
+                el.style.left = e.pageX - pos.x + "px"
+                el.style.top = e.pageY - pos.y + "px"
+            }
+        })
+        document.addEventListener("mouseup", function () {
+            flag = false
+        })
+
+    </script>
+</body>
+
+</html>

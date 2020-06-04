@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        ul {
+            display: none;
+        }
+
+        ul.active {
+            display: block;
+        }
+
+        ul li.active {
+            background: red;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <input type="text">
+
+
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+</body>
+<script>
+    var input = document.querySelector("input"),
+        ul = document.querySelector("ul")
+    // 焦点事件
+    input.addEventListener("focus", function (e) {
+        ul.classList.add("active")
+    })
+    // 给ul绑定点击事件
+    ul.addEventListener("click", function (e) {
+        var tar = e.target;
+        if (tar.nodeName === "LI") {
+            // 把点击的内容放到input
+            input.value = tar.innerHTML
+            // ul隐藏
+            ul.classList.remove("active")
+        }
+    })
+
+    // 划过事件
+    ul.addEventListener("mouseover", function (e) {
+        var tar = e.target;
+        if (tar.nodeName === "LI") {
+            var li = ul.querySelector(".active")
+       
+            li.classList.remove("active")
+    
+            tar.classList.add("active")
+        }
+    })
+    // 绑定键盘事件
+    input.addEventListener("keydown", function (e) {
+
+        if (e.keyCode === 13) {
+            // 回车
+            var li = ul.querySelector(".active")
+            // 放到input
+            input.value = li.innerHTML
+            // 隐藏ul
+            ul.classList.remove("active")
+
+        }
+
+        if (e.keyCode === 38) {
+            // 上箭头
+
+            var li = ul.querySelector(".active")
+            // 原来的删除类名
+            li.classList.remove("active")
+            // 
+            if (li.previousElementSibling) {
+                li.previousElementSibling.classList.add("active")
+
+            } else {
+                ul.lastElementChild.classList.add("active")
+            }
+
+        }
+
+        if (e.keyCode === 40) {
+            // 下箭头
+
+            var li = ul.querySelector(".active")
+            // 原来的删除类名
+            li.classList.remove("active")
+            // 
+            if (li.nextElementSibling) {
+                li.nextElementSibling.classList.add("active")
+            } else {
+                ul.firstElementChild.classList.add("active")
+            }
+
+        }
+    })
+
+</script>
+
+</html>

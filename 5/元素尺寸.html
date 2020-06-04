@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#box {
+			width: 300px;
+			height: 300px;
+			border: 1px solid #ccc;
+			padding: 10px;
+			background: red;
+		}
+	</style>
+</head>
+
+<body style='width:2000px;height:2000px;'>
+	<div id='box' style="height:300px;"></div>
+
+	<script>
+		var box = document.querySelector('#box');
+		console.log(box.style.height); //'300px'
+
+		// 元素的内宽度clientWidth和内高度clientHeight
+		// 内宽度:  自身宽度 + 左右padding
+		// console.log(box.clientWidth);
+
+		// 元素的外宽度offsetWidth和外高度offsetHeight 
+		// 外宽度: 自身宽度 + 左右padding + 左右border
+		// console.log(box.offsetWidth,box.offsetHeight);
+
+
+		//innerWidth 和 innerHeight HTML的宽度和高度(包括滚动条)
+		console.log(window.innerWidth);
+		console.log(window.innerHeight)
+
+		//可视区域的大小 :浏览器可视区 ==> 可以看到的区域(不包括滚动条)
+		// console.log(document.documentElement.clientWidth);
+		// console.log(document.documentElement.clientHeight);
+
+		// //页面的实际大小
+		console.log(document.documentElement.scrollWidth);//HTML标签的宽度
+		console.log(document.documentElement.scrollHeight);//HTML标签的高度
+	</script>
+</body>
+
+</html>

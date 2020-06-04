@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+.box{
+    width: 800px;
+    height: 650px;
+    border: 1px solid #000
+}
+.top{
+    width: 800px;
+    height: 80px;
+    border-bottom: 1px solid #000;
+}
+.top > ol >li{
+    float: left;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+.tbody{
+    width: 800px;
+    height: 490px;
+    border-bottom: 1px solid #000;
+}
+.left{
+    height: 490px;
+    width: 200px;
+    border-right: 1px solid #000;
+    float: left;
+}
+.center{
+    height: 490px;
+    width: 200px;
+    border-right: 1px solid #000;
+    float: left;
+}
+.right{
+    height: 490px;
+    width: 200px;
+    border-right: 1px solid #000;
+    float: left;
+}
+.you{
+    height: 490px;
+    width: 200px;
+    float: right;
+}
+.active{
+    background-color: red;
+}
+li{
+    margin-top: 20px;
+}
+.you span{
+    display: block;
+    margin-top: 20px;
+}

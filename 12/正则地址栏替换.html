@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ?name=zs&age=18
+        // 第一步：name=zs&age=18
+        // 第二步：name=zs","age=18
+        // 第三步： name":"zs","age":18
+        // 第四步：{"name":"zs","age":18"}
+        // 第五步： JSON.parse()
+        // var URLObject = JSON.parse('{"' + location.search.slice(1).replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+
+        // 方式二
+        function getParseURL(url = window.location.href) {/*es6语法直接设置默认值*/
+            const search = url.substr(url.indexOf('?') + 1);
+            const obj = {};
+            search.replace(/([^&=]+)=([^&=]*)/g, function (rs, $1, $2) {
+                obj[decodeURIComponent($1)] = decodeURIComponent($2)
+            })
+            return obj
+        }
+        var o = getParseURL()
+    </script>
+
+</body>
+
+</html>

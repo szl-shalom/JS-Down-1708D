@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+
+    </ul>
+    <script>
+        // 数组的方法
+        // 1.forEach
+        // var arr = ["大家好", "很开心来到1708D", "这个班级41人", "每一个人都很优秀"]
+        //  功能 就是遍历数组
+        //  返回值 undefined
+        // var ul = document.getElementsByTagName("ul")[0]
+        // var html = ''
+        // var result = arr.forEach(function (item, index) {
+        //     // console.log(item, index)
+        //     // document.write(item)
+        //     ul.innerHTML += "<li>" + item + "</li>"
+        //     return 1
+        // })
+        // ul.innerHTML = html
+        // console.log(result)
+
+        // 2 map
+        // var arr = [{
+        //     name: "张三"
+        // }, {
+        //     name: "李四"
+        // }, {
+        //     name: "王五"
+        // }, {
+        //     name: "赵柳"
+        // }]
+        // var ul = document.querySelector("ul")
+        // ul.innerHTML = arr.map(function (item, index, ) {
+        //     // console.log(item, index)
+        //     return `<li>${item.name}</li>`
+        // }).join("")
+        // console.log(res)
+        // 返回一个新数组 新数组的长度就是原数组的长度
+        // 新数组的每一项是map的返回值
+        // filter
+        // 返回值是一个新数组
+        // 新数组当中的每一项是filter返回值为true的那一项
+        // var arr = ["123", "234", "548", "987"]
+        // // [3,4]
+        // // ["548", "987"]
+        // var res = arr.filter(function (item, index) {
+        //     return item > 500
+        // })
+        // console.log(res)
+        // every 
+        // 如果每一项返回值转布尔值为true every返回值就是true
+        // 如果存在一项返回值转布尔值为false every返回值就是false
+        // var arr = [1, 2, 3, 4, 5]
+        // var res = arr.every(function (item, index) {
+        //     return item > 1
+        // })
+        // console.log(res)
+        // some
+        // 如果每一项返回值转布尔值为false some返回值就是false
+        // 如果存在一项返回值转布尔值为true some返回值就是true
+
+        var arr = [1, 2, 3, 4, 5]
+        var res = arr.some(function (item, index) {
+            return item > 10
+        })
+        console.log(res)
+        // reduce
+
+    </script>
+</body>
+
+</html>

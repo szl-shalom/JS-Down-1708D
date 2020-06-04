@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <button>点我</button>
+    <script>
+        document.querySelector("button").onclick = function () {
+            var div = document.createElement("div")
+            div.style.width = "100%";
+            div.style.height = "100%";
+            div.style.background = "rgba(0,0,0,.3)"
+            div.style.position = "fixed"
+            div.style.left = 0
+            div.style.top = 0
+
+
+            var button = document.createElement("button")
+            button.innerHTML = "关闭"
+            div.appendChild(button)
+
+
+            button.onclick = function () {
+                div.parentNode.removeChild(div)
+            }
+            document.body.appendChild(div)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		ul {
+			height: 50px;
+		}
+
+		ul li {
+			width: 100px;
+			height: 40px;
+			float: left;
+			padding: 0 5px;
+			line-height: 50px;
+			text-align: center;
+			border-bottom: 1px solid #ccc;
+		}
+
+		#bottom {
+			clear: both;
+		}
+
+		ul li span {
+			padding: 0 5px;
+			text-align: center;
+		}
+
+		button {
+			display: inline-block;
+			width: 200px;
+			height: 45px;
+			color: white;
+			background: green;
+		}
+
+		button.col {
+			background: #ccc;
+			color: black;
+		}
+
+		ul li.bor {
+			border: 1px solid #ccc;
+			border-bottom: none;
+		}
+
+		ul li span:hover {
+			background: orange;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+
+		<ul class="ul">
+			<li>网络设置<span>X</span></li>
+			<li  class="bor">用户管理<span>X</span></li>
+			<li>权限分配<span>X</span></li>
+			<li>商品管理<span>X</span></li>
+			<li>订单管理<span>X</span></li>
+		</ul>
+
+		<div id="class">
+			<p id="content">内容1</p>
+			<button id="add">新增选项</button>
+			<button id="remove">删除:商品管理</button>
+			<button>切换到:用户管理</button>
+		</div>
+
+	</div>
+
+	<script>
+		var add = document.querySelector("#add"),
+			ul = document.querySelector(".ul"),
+			content = document.querySelector("#content")
+
+		add.onclick = function () {
+			var li = document.createElement("li")
+			li.innerHTML = "新内容"
+			var span = document.createElement("span")
+			span.innerHTML = "x"
+			li.appendChild(span)
+			ul.appendChild(li)
+		}
+
+		ul.onclick = function (e) {
+			// e事件对象：当事件触发时，浏览器传递给事件驱动函数的第一个参数 
+			// e.target 事件源
+			var tar = e.target //获取事件源
+			// 删除
+			if(tar.nodeName === "SPAN"){
+				// 说明我点击的是span标签 准备删除
+				tar.parentNode.parentNode.removeChild(tar.parentNode)
+			}
+			// 切换
+			if(tar.nodeName === "LI"){
+				// 去掉原来的类名
+				var bor = ul.querySelector(".bor")
+				bor.classList.remove("bor")
+				// 添加类
+				tar.classList.add("bor")
+				// 修改内容
+				content.innerHTML = tar.firstChild.nodeValue
+			}
+		}
+
+	</script>
+</body>
+
+</html>

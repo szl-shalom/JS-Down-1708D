@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left {
+            float: left;
+
+            width: 323px;
+            height: 430px;
+            position: relative;
+            margin-left: 20px;
+
+        }
+
+        .left>img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .left>.mask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 0, 0, .7)
+        }
+
+        .right {
+            float: left;
+            margin-left: 20px;
+            width: 323px;
+            height: 430px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .right>img {
+            position: absolute;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="left">
+        <img src="./放大镜.jpg" alt="">
+        <div class="mask"></div>
+    </div>
+
+    <div class="right">
+        <img src="./放大镜.jpg" alt="" class="img">
+    </div>
+    <script>
+        // 获取节点
+        var left = document.querySelector(".left"),
+            mask = document.querySelector(".mask"),
+            img = document.querySelector(".img"),
+            right = document.querySelector(".right"),
+            // left的距离body的左边距和上边距
+            y1 = left.offsetTop,
+            x1 = left.offsetLeft,
+            // 阴影盒子宽度高度各一半
+            x3 = mask.offsetWidth / 2,
+            y3 = mask.offsetHeight / 2;
+        //  比例：
+        var nX = left.offsetWidth / mask.offsetWidth,
+            nY = left.offsetHeight / mask.offsetHeight;
+        // 宽度:
+        img.style.width = right.offsetWidth * nX + "px"
+        img.style.height = right.offsetHeight * nY + "px"
+        console.log(left.offsetWidth, right.offsetWidth, mask.offsetWidth)
+
+        left.addEventListener("mousemove", function (e) {
+            // 获取鼠标点到页面的距离
+            var x = e.pageX,
+                y = e.pageY,
+                // 
+                y2 = y - y1 - y3,
+                x2 = x - x1 - x3;
+
+            // 限制范围
+            y2 < 0 ? y2 = 0 : null
+            x2 < 0 ? x2 = 0 : null
+
+            x2 > left.offsetWidth - mask.offsetWidth ? x2 = left.offsetWidth - mask.offsetWidth : null
+            y2 > left.offsetHeight - mask.offsetHeight ? y2 = left.offsetHeight - mask.offsetHeight : null
+
+
+
+            mask.style.left = x2 + "px"
+            mask.style.top = y2 + "px"
+            // 控制右侧
+            img.style.left = - x2 * nX + "px"
+            img.style.top = - y2  * nY + "px"
+
+        })
+
+    </script>
+
+</body>
+
+</html>

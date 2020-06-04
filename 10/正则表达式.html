@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 什么是表达式
+
+        // 什么是正则表达式   regular expression
+        // 有表达式主体和修饰符组成
+
+        // 正则表达式使用单个字符串来描述，匹配符合某个语法规则的字符串的一种搜索模式
+
+        // 搜索模式分为两种 一种是文本搜索 和 文本替换
+
+        // 声明
+
+        // var reg = /正则表达式主体/g
+        // console.log(reg)
+
+        // var reg1 = new RegExp("表达式主体", "g")
+        // console.log(reg1)
+
+
+        // 修饰符
+        // i  忽略大小写
+        // g  执行全局匹配
+        // m  执行多行匹配
+
+        // 元字符
+        // \d 数字 0 - 9
+        // \w 数字 _ 字母
+        // \s 空白字符
+
+
+        // 表达式
+        // [abc] abc其中一个字符
+        // [0-9] 0-9之间任意数字
+        // [A-Z] 匹配a-z任意字母
+        // 注意 ^
+        // [^1] 匹配不是1的任意字符
+
+        // 限定符
+        // ^ 开头
+        // $ 结尾
+
+        // var reg = /^[A-Z]$/
+        // (x|y) 符合x的字符串或者符合y
+
+        // 两次
+        // n* 有没有都行
+        // n+ 至少一个n
+        // n? 最多一个
+        // {n}  就是n个
+        // {n,} 最少n个
+        // {n,m} n-m之间都可以
+
+        // var reg = /1\\/
+
+        // 转义字符
+        // \
+
+        // 汉字
+        // var reg = / [\u4e00-\u9fa5]/
+
+
+        // (x|y)  满足任意的分组
+        // 代表分组
+
+
+
+        // var reg = /\w+@\w+\.(com|cn|net)/
+        // var regName = /[\u4e00-\u9fa5]{2,4}/
+        // var num = "魑魅魍魉"
+
+
+
+
+        // var flag = regName.test(num)
+        // console.log(flag)
+
+
+
+
+
+    </script>
+</body>
+
+</html>

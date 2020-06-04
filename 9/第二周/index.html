@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .header {
+            line-height: 35px;
+            overflow-x: auto;
+            width: 300px;
+            border: 1px solid #ccc;
+        }
+
+        .header ul {
+            width: 1200px;
+        }
+
+        .header ul li {
+            width: 120px;
+            text-align: center;
+            line-height: 35px;
+            float: left;
+        }
+
+        .header ul li.active {
+            background: red;
+        }
+
+        .mask {
+            display: none;
+        }
+
+        .mask.active {
+            display: block;
+        }
+
+        .mask .mask-header {
+            height: 400px;
+        }
+
+        .mask .mask-content {
+            height: 400px;
+        }
+
+        .mask span {
+            width: 120px;
+            text-align: center;
+            line-height: 35px;
+            float: left;
+            border: 1px solid #ccc;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <ul class="ul">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+    </div>
+
+    <button class="add">添加</button>
+
+    <div class="mask">
+        删除
+        <div class="mask-header">
+            点击删除
+            <span>大青蛙</span> <span>大青蛙</span>
+
+            <span>大青蛙</span> <span>大青蛙</span>
+
+            <span>大青蛙</span>
+            <span>大青蛙</span>
+            <span>大青蛙</span>
+            <span>大青蛙</span>
+
+            <span>大青蛙</span>
+        </div>
+        添加
+        <div class="mask-content">
+            点击添加
+            <span>为二位</span>
+        </div>
+    </div>
+    <script>
+        // 模拟数据
+        var data = ["驱蚊器", "范围", "驱蚊器", "范围", "驱蚊器", "范围", "驱蚊器", "范围", "驱蚊器", "范围"]
+        var data2 = ["大家伙", "今天天气不错", "大气污染"]
+        // 渲染
+        function renderHeader(arr) {
+            ul.innerHTML = arr.map(function (item, index) {
+                return `<li ind = ${index}>${item}</li>`
+            }).join("")
+            ul.style.width = arr.length * 120 + "px"
+        }
+
+        function renderMaskHeader(arr, el) {
+            el.innerHTML = arr.map(function (item, index) {
+                return `<span ind = ${index}>${item}</span>`
+            }).join("")
+        }
+
+
+
+        var ul = document.querySelector(".ul"),
+            maskHeader = document.querySelector(".mask-header"),
+            maskContent = document.querySelector(".mask-content"),
+            mask = document.querySelector(".mask"),
+            add = document.querySelector(".add"),
+            header = document.querySelector(".header")
+
+
+
+        renderHeader(data)
+        renderMaskHeader(data, maskHeader)
+        renderMaskHeader(data2, maskContent)
+
+        maskHeader.addEventListener("click", function (e) {
+            var tar = e.target;
+            if (tar.nodeName === "SPAN") {
+                var index = tar.getAttribute("ind")
+                var delArr = data.splice(index, 1)
+                data2.push(delArr[0])
+                renderHeader(data)
+                renderMaskHeader(data, maskHeader)
+                renderMaskHeader(data2, maskContent)
+            }
+        })
+
+        maskContent.addEventListener("click", function (e) {
+            var tar = e.target;
+            if (tar.nodeName === "SPAN") {
+                var index = tar.getAttribute("ind")
+                var delArr = data2.splice(index, 1)
+                data.push(delArr[0])
+                renderHeader(data)
+                renderMaskHeader(data, maskHeader)
+                renderMaskHeader(data2, maskContent)
+            }
+        })
+
+        add.addEventListener("click", function () {
+            mask.classList.toggle("active")
+        })
+
+        header.addEventListener("click", function (e) {
+            var tar = e.target
+            if (tar.nodeName === "LI") {
+                [...header.querySelectorAll("li")].forEach(function (item) {
+                    item.classList.remove("active")
+                })
+                header.scrollLeft = tar.offsetLeft - header.offsetWidth / 2 + tar.offsetWidth / 2
+                tar.classList.add("active")
+            }
+        })
+    </script>
+</body>
+
+</html>

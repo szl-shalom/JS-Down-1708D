@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.wrap {
+    width: 800px;
+    margin: 50px auto;
+}
+
+.wrap .content {
+    width: 100%;
+}
+
+.wrap .content table {
+    width: 100%;
+    text-align: center;
+}
+.footer button{
+    background: #ccc;
+    border: 1px solid #ccc;
+}
+.footer .pagation {
+    display: inline-block;
+}
+
+.footer .pagation button {
+    height: 22px;
+    padding: 0 10px;
+}
+
+.footer .pagation button.active {
+    background: skyblue;
+}

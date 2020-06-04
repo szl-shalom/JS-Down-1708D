@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <input type="checkbox" name="" id="">
+            <img src="" alt="">
+            单价<span>55</span>
+            <button class="reduce">-</button>
+            数量<span>1</span>
+            <button class="add">+</button>
+            小计<span>55</span>
+        </li>
+        <li>
+            <input type="checkbox" name="" id="">
+            <img src="" alt="">
+            单价<span>60</span>
+            <button class="reduce">-</button>
+            数量<span>1</span>
+            <button class="add">+</button>
+
+            小计 <span>60</span>
+        </li>
+        <li>
+            <input type="checkbox" name="" id="">
+            <img src="" alt="">
+            单价 <span>70</span>
+            <button class="reduce">-</button>
+            <span>1</span>
+            数量 <button class="add">+</button>
+            小计 <span>70</span>
+        </li>
+    </ul>
+    <div>
+        <input type="checkbox" name="" id="" class="allCheck">全选
+        <span class="allPrice">0</span>总价
+    </div>
+
+    <script>
+
+        var allCheck = document.querySelector(".allCheck"),
+            ul = document.querySelector("ul"),
+            allPrice = document.querySelector(".allPrice"),
+            inputs = [...ul.querySelectorAll("input")];
+
+        allCheck.addEventListener("click", function () {
+            var inputs = [...ul.querySelectorAll("input")]
+            inputs.forEach(function (item) {
+                item.checked = allCheck.checked
+            })
+            getAllPrice()
+
+        })
+
+        ul.addEventListener("click", function (e) {
+            var tar = e.target;
+            if (tar.className === "reduce") {
+                tar.nextElementSibling.innerHTML--
+                if (tar.nextElementSibling.innerHTML < 1) {
+                    tar.nextElementSibling.innerHTML = 1
+                }
+                tar.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML = tar.previousElementSibling.innerHTML * tar.nextElementSibling.innerHTML
+                getAllPrice()
+            }
+
+            if (tar.className === "add") {
+                tar.previousElementSibling.innerHTML++
+                tar.nextElementSibling.innerHTML = tar.previousElementSibling.innerHTML * tar.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML
+                getAllPrice()
+
+            }
+
+            if (tar.nodeName === "INPUT") {
+                var res = inputs.every(function (item) {
+                    return item.checked
+                })
+                allCheck.checked = res
+                getAllPrice()
+
+            }
+        })
+
+        function getAllPrice() {
+            var sum = 0
+            inputs.forEach(function (item) {
+                if (item.checked) {
+                    sum += +item.parentNode.lastElementChild.innerHTML
+                }
+            })
+
+            allPrice.innerHTML = sum
+
+        }
+    </script>
+</body>
+
+</html>

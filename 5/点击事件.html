@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .q {
+            height: 500px;
+            width: 500px;
+            background: red;
+        }
+
+        .w {
+            height: 300px;
+            width: 300px;
+            background: green;
+            position: absolute;
+            left: 500px;
+        }
+
+        .e {
+            height: 150px;
+            width: 150px;
+            background: yellow;
+            position: absolute;
+            left: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+
+        <div>1232354</div>
+
+
+        <span>4435413</span>
+    </ul>
+    <script>
+
+        // var lis = [...document.querySelectorAll("li")]
+        // lis.forEach(function (item) {
+        //     item.onclick = function () {
+        //         alert(item.innerHTML)
+        //     }
+        // })
+
+        var ul = document.querySelector("ul")
+
+        ul.onclick = function (e) {
+            // console.log(e)
+            // e  事件对象
+            // e.target //事件源
+            // console.log(e.target.innerHTML)
+
+            if (e.target.nodeName === "LI") {
+                console.log(e.target.innerHTML)
+            }
+
+
+        }
+
+
+        var li = document.createElement("li")
+        li.innerHTML = Math.random()
+
+        ul.appendChild(li)
+
+
+
+
+
+
+
+
+        // // 猜想
+        // var div1 = document.querySelector(".q"),
+        //     div2 = document.querySelector(".w"),
+        //     div3 = document.querySelector(".e");
+
+        // div1.addEventListener("click", function () {
+        //     alert(1)
+        // }, true)
+        // div2.addEventListener("click", function () {
+        //     alert(2)
+        // }, true)
+
+        // div3.addEventListener("click", function () {
+        //     alert(3)
+        // }, true)
+
+
+
+        // div1.addEventListener("click", function () {
+        //     alert(1)
+        // }, false)
+        // div2.addEventListener("click", function () {
+        //     alert(2)
+        // }, false)
+
+        // div3.addEventListener("click", function () {
+        //     alert(3)
+        // }, false)
+
+
+
+        // div1.onclick = function () {
+        //     alert(1)
+        // }
+        // div2.onclick = function () {
+        //     alert(2)
+        // }
+        // div3.onclick = function () {
+        //     alert(3)
+        // }
+
+        // 事件委托 || 事件代理
+
+        // va
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>图标回收站</title>
+    <!-- The jQuery UI Styles -->
+    <link rel="stylesheet" href="styles/jquery-ui.css" />
+    <!-- Our stylesheet -->
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+    <div id="main">
+        <div class="folder">
+            <!--folder 加open类名文件夹打开-->
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>​
+        <img src="images/box.png" style="top:340px;left:100px;" alt="box" />
+        <img src="images/calculator.png" style="top:340px;left:170px;" alt="calculator" />
+        <img src="images/clipboard.png" style="top:340px;left:240px;" alt="clipboard" />
+        <img src="images/console.png" style="top:340px;left:310px;" alt="console" />
+        <img src="images/basketball.png" style="top:340px;left:380px;" alt="basketball" />
+        <img src="images/facebook.png" style="top:400px;left:100px;" alt="facebook" />
+        <img src="images/gift.png" style="top:400px;left:170px;" alt="gift" />
+        <img src="images/id_card.png" style="top:400px;left:240px;" alt="id card" />
+        <img src="images/imac.png" style="top:400px;left:310px;" alt="imac" />
+        <img src="images/system_monitoring.png" style="top:400px;left:380px;" alt="system monitoring" />
+    </div>
+
+    <script>
+        //要求: 
+        //  必做功能点:  1.每个图标都能正常拖动  2.拖到指定区域删除   
+        //  扩展功能点： 1.文件夹打开收起效果  2.删除数量累加效果  
+
+        //思路分析：
+        //1.封装一个拖拽的方法
+        //2.正确绑定鼠标按下/鼠标移动/鼠标抬起三个事件
+        //3.正确设置开关变量  flag
+        //4.正确计算位置关系  e.offetX   e.offsetY    e.pageX  e.pageY
+        //5.删除时正确进行边界判断:  小图标必须完全拖到文件夹的范围内才能删除
+        //6.获取到每一个小图标调用拖拽方法: 可以循环绑定或者使用事件委托
+
+        var main = document.querySelector("#main"),
+            folder = document.querySelector(".folder")
+
+
+
+        var pos = null,
+            flag = false,
+            el;
+        document.addEventListener("mousedown", function (e) {
+            if (e.target.nodeName === "IMG") {
+                el = e.target
+                e.preventDefault()
+                pos = {
+                    x: e.offsetX,
+                    y: e.offsetY
+                }
+                flag = true
+            }
+
+        })
+        document.addEventListener("mousemove", function (e) {
+            if (flag) {
+                var x = e.pageX - main.offsetLeft - pos.x,
+                    y = e.pageY - main.offsetTop - pos.y;
+                el.style.left = x + "px";
+                el.style.top = y + "px";
+            }
+
+        })
+        document.addEventListener("mouseup", function (e) {
+            var x = e.pageX,
+                y = e.pageY;
+            var a = x > main.offsetLeft + folder.offsetLeft
+            b = x < main.offsetLeft + folder.offsetLeft + folder.offsetWidth
+            c = y > main.offsetTop + folder.offsetTop
+            d = y < main.offsetTop + folder.offsetTop + folder.offsetHeight
+            if (a && b && c && d) {
+                el.parentNode.removeChild(el)
+            }
+            flag = false
+        })
+
+
+
+    </script>
+</body>
+
+</html>

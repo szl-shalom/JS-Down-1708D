@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var obj = {}
+        // // ?iphone=123123123123123&pwd=2312311
+
+        // // => iphone=123123123123123&pwd=2312311   slice(1)
+        // var str = location.search.slice(1)
+        // // console.log(str)
+        // // => ["iphone=123123123123123","pwd=2312311"]  split("&")
+        // var arr = str.split("&")
+        // // console.log(arr)
+        // // => ["iphone", "123123123123123"]["pwd", "2312311"] forEach  split("=")
+        // arr.forEach(function (item) {
+        //     var res = item.split("=")
+        //     // console.log(res)
+        //     obj[res[0]] = res[1]
+        // })
+        // console.log(obj)
+
+        // 利用正则表达式解析
+        // ?iphone=123123123123123&pwd=2312311
+
+        // 第一步去掉?
+        // iphone=123123123123123&pwd=2312311
+        var str = location.search.slice(1)
+            // 第二步 & 替换 ","
+            // iphone=123123123123123","pwd=2312311
+            // 第三步 = 替换 "："
+
+            // 第四部在两端
+            // {"iphone":"123123123123123","pwd":"2312311"}
+
+            `{"iphone":"123123123123123","pwd":"2312311"}`
+
+        // console.log(JSON.parse(JSONData))
+
+            
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            margin: auto;
+            width: 500px;
+            height: 500px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body style="height: 2000px;">
+    <div>
+    </div>
+    <input type="text">
+    <script>
+        var div = document.querySelector("div")
+        var ipt = document.querySelector("input")
+        // 1 什么是事件
+        // 一般情况下 指 用户与浏览器交互的一瞬间
+        // 2 事件分类  dom 0级事件
+        // 鼠标类事件
+        // onclick   鼠标单击
+        // ondblclick 鼠标双击
+        // onmousedown 鼠标按下
+        // onmouseup 鼠标抬起
+
+        // onmouseenter 鼠标划入
+        // onmouseleave 鼠标划出
+
+        // onmouseover  鼠标悬浮上方
+        // onmouseout   鼠标离开
+
+        // 键盘类事件
+
+        // onkeydown 键盘按下
+        // onkeyup 键盘抬起
+        // onkeypress 键盘按下加抬起
+
+        // document.onkeydown = function (e) {
+        //     if (e.keyCode === 13) {
+        //         alert("按下回车")
+        //     }
+        // }
+
+        // document.onkeyup = function () {
+        //     console.log(789)
+        // }
+        // 表单类事件
+        // 聚焦
+        // ipt.onfocus = function () {
+        //     console.log(1)
+        // }
+        // 失去焦点
+        // ipt.onblur = function () {
+        //     console.log(2)
+        // }
+        // ipt.oninput = function () {
+        //     console.log(3)
+        // }
+
+        // ipt.onchange = function () {
+        //     console.log(4)
+        // }
+        //  UI 事件
+        // onload 预加载完成
+        // onscroll 滚动事件
+
+        // document.onscroll = function () {
+        //     console.log(1)
+        // }
+
+        // 事件三要素
+        // 1 事件类型
+        // 2 事件驱动函数
+        // 3 事件源
+
+        // 事件传播机制
+        // 事件流
+        // 先捕获 =》 目标 =》冒泡
+        // 啥是冒泡？
+        // 由具体某一个元素向上依次触发某一个事件  由内向外
+        // 啥是捕获
+        // 由最外面的元素依次向内触发某一个事件    由外向内
+
+
+        // dom 0级事件  
+        // 1 后来事件会覆盖前面的事件
+        // 2 只有冒泡阶段
+        // div.onclick = function () {
+        //     console.log(1)
+        // }
+
+        // div.onclick = function () {
+        //     console.log(2)
+        // }
+        // dom 2级
+        // 1 可以绑定相同的事件 并且会根据顺序依次触发
+        // 2 有冒泡和捕获
+        // 第三个参数为false时候 为冒泡  为true 是捕获阶段
+
+
+        // 冒泡
+        div.addEventListener("click", function () {
+            console.log(4)
+        }, false)
+        // 捕获
+        div.addEventListener("click", function () {
+            console.log(3)
+        }, true)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		#box {
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+
+<body>
+
+	<img src="1.png" alt="" id='box'>
+
+	<script>
+		var img = document.querySelector("img")
+		// 鼠标按下事件
+		img.onmousedown = function (e) {
+			var x = e.offsetX,
+				y = e.offsetY;
+			// console.log(x, y)
+			e.preventDefault()
+			document.onmousemove = function (e) {
+				var xx = e.clientX,
+					yy = e.clientY,
+					left = xx - x,
+					top = yy - y
+
+				if (left < 0) left = 0
+				if (top < 0) top = 0
+
+				if (left > document.documentElement.clientWidth - img.offsetWidth)
+					left = document.documentElement.clientWidth - img.offsetWidth
+				if (top > document.documentElement.clientHeight - img.offsetHeight)
+					top = document.documentElement.clientHeight - img.offsetHeight
+				
+
+				img.style.left = left + "px"
+				img.style.top = top + "px"
+
+			}
+		}
+		// 鼠标抬起事件
+		img.onmouseup = function () {
+			document.onmousemove = null
+		}
+	</script>
+</body>
+
+</html>

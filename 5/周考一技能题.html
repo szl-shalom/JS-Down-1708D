@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		ul {
+			height: 50px;
+		}
+
+		ul li {
+			width: 100px;
+			height: 40px;
+			float: left;
+			padding: 0 5px;
+			line-height: 50px;
+			text-align: center;
+			border-bottom: 1px solid #ccc;
+		}
+
+		#bottom {
+			clear: both;
+		}
+
+		ul li span {
+			padding: 0 5px;
+			text-align: center;
+		}
+
+		button {
+			display: inline-block;
+			width: 200px;
+			height: 45px;
+			color: white;
+			background: green;
+		}
+
+		button.col {
+			background: #ccc;
+			color: black;
+		}
+
+		ul li.bor {
+			border: 1px solid #ccc;
+			border-bottom: none;
+		}
+
+		ul li span:hover {
+			background: orange;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+
+		<ul class="ul">
+			<li class='bor'>网络设置<span>X</span></li>
+			<li>用户管理<span>X</span></li>
+			<li>权限分配<span>X</span></li>
+			<li>商品管理<span>X</span></li>
+			<li>订单管理<span>X</span></li>
+		</ul>
+
+		<div id="class">
+			<p id="content">内容1</p>
+			<button id="add">新增选项</button>
+			<button id="remove">删除:商品管理</button>
+			<button>切换到:用户管理</button>
+		</div>
+	</div>
+
+	<script>
+
+
+
+	</script>
+</body>
+
+</html>

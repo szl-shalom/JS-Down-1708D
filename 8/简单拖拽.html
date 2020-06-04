@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            background: red;
+            position: absolute;
+        }
+
+        div:nth-child(2) {
+            left: 220px;
+        }
+
+        div:nth-child(3) {
+            top: 220px;
+        }
+
+
+
+        div:nth-child(4) {
+            left: 220px;
+            top: 220px;
+        }
+
+        h1 {
+            position: absolute;
+        }
+
+        html {
+            position: absolute;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <h1>123</h1>
+
+    <script>
+        var pos = null, //鼠标距离被拖拽的元素的左边距和右边距
+            flag = false,//开关变量
+            el;//被拖拽的节点
+
+
+        document.addEventListener("mousedown", function (e) {
+            var tar = e.target; //获取事件源
+            e.preventDefault()
+            if (tar.nodeName === "DIV") {
+                el = tar;
+                pos = {
+                    x: e.offsetX,
+                    y: e.offsetY
+                }
+                flag = true
+            }
+        })
+
+        document.addEventListener("mousemove", function (e) {
+            if (flag) {
+                el.style.left = e.pageX - pos.x + "px"
+                el.style.top = e.pageY - pos.y + "px"
+            }
+        })
+
+
+        document.addEventListener("mouseup", function (e) {
+            flag = false
+        })
+
+
+    </script>
+</body>
+
+</html>

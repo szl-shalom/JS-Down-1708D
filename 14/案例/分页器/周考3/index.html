@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div {
+            height: 100px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        div ul li {
+            height: 32px;
+            opacity: 1;
+            list-style: none;
+            transition: opacity .5s;
+            line-height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+        </ul>
+    </div>
+
+    <button>停止</button>
+    <input type="text">
+    <button>添加</button>
+
+
+    <script>
+        window.onload = function () {
+            var timer;
+            var ul = document.querySelector("ul")
+            var btns = [...document.querySelectorAll("button")]
+            var input = document.querySelector("input")
+            btns[0].onclick = function () {
+                clearTimeout(timer)
+            }
+
+            btns[1].onclick = function () {
+               var li = document.createElement("li")
+                li.innerHTML = input.value
+               ul.appendChild(li)
+            }
+
+
+
+            function scroll() {
+                ul.firstElementChild.style.opacity = 0
+                setTimeout(function () {
+                    ul.style.transition = "all .5s"
+                    ul.style.marginTop = -32 + "px"
+                }, 500)
+
+                timer = setTimeout(function () {
+                    ul.firstElementChild.style.opacity = 1
+                    ul.style.transition = ""
+                    ul.style.marginTop = 0
+                    ul.appendChild(ul.firstElementChild)
+                    scroll()
+                }, 1000)
+            }
+
+            scroll()
+        }
+
+
+    </script>
+</body>
+
+</html>

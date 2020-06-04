@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="http://172.16.10.119:8080/bwie">点</a>
+
+	<script>
+	var a = document.querySelector('a');
+	a.onclick = function(event){
+		var e = event || window.event;
+		e.preventDefault(); //阻止默认事件 非IE下
+		// e.returnValue = false; //IE下
+	}
+	</script>
+</body>
+</html>

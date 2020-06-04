@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        height: 200px;
+        width: 200px;
+        background: #ccc;
+    }
+</style>
+
+
+<body>
+    <div class="qwe" style="width:330px">1
+
+    </div>
+    <script>
+        // bom : browser object model  浏览器对象模型
+
+        // 1.location  保存着浏览器地址信息
+        // 属性
+        // host: 主机号及端口
+        // search : ?以后的数据
+
+
+        // 2.history : 保留着当前页面所有历史记录
+        // 属性
+        // length ： 保留当前页面所有历史记录的长度
+        // 方法
+        // back()  后退一页
+        // forward() 前进一页
+        // go(n)  前进n页面 
+
+
+        // navigator ：保留着浏览器基本信息
+        // 属性
+        // userAgent :当前用户使用的代理信息  就是浏览器基本信息
+
+        // dom : document object model  文档对象模型
+
+        // 获取dom
+        // 通过id名称获取
+        // 元素.getElementById(ID名称)  //单个
+        // 通过标签名称获取
+        // 元素.getElementsByTagName(标签名) /多个
+        // 通过css选择器获取
+        // 元素.querySelector(css名称)  //单个
+        // 元素.querySelectorAll(css名称) //多个
+
+
+        // 假设页面有一个el  span  div
+        // dom关系
+        // el.parentNode  //获取父节点
+        // el.nextElementSibling 下一个兄弟元素节点
+        // el.previousElementSibling 上一个兄弟元素节点
+        // el.children 所有子元素节点
+
+        // 增删改替节点 
+        // el.appendChild(div) //给el 添加div元素  默认在el的末尾添加
+        // el.insertBefore(div,el.firstElementChild)  //在el中的第一个子元素节点前面插入div
+        // el.replaceChild(span,div) //将el中div元素替换成span元素
+        // el.parentNode.removeChild(el)
+
+        // 克隆
+        // var div = document.querySelector("div")
+        // console.log(div)
+
+
+        // var el = div.cloneNode(true)
+        // console.log(el)
+
+        // var el1 = div.cloneNode(false)
+        // console.log(el1)
+
+        // 设置属性
+        // el.setAttribute("ind",2)  //给el设置属性ind 并赋值为2
+        // el.getAttribute("ind")    //获取el的属性ind的值
+
+        // 操作类
+        // el.classList.add("myClass") //给el添加类名myClass
+        // el.classList.remove("myClass") //删除
+        // el.classList.contains("myClass") //是否包含类名 myClass
+        // el.classList.toggle("myClass") //切换
+
+        // 获取外部样式
+        // getComputedStyle(el) //获取el的外部样式
+
+        // var div = document.querySelector("div")
+        // var styleDiv = getComputedStyle(div).background
+        // console.log(styleDiv)
+
+        // 获取行内样式
+        // console.log(div.style.height)
+
+        // 
+
+        // var width = div.offsetWidth
+        // var height = div.offsetHeight
+        // console.log(width, height)
+    </script>
+</body>
+
+</html>

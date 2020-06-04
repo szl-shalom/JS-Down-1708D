@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="box1">
+        <div class="box2">
+            <!-- <div class="box3">
+                <img src="./images/1.webp" alt="">
+            </div>
+            <div class="box3">
+                <img src="./images/2.jpg" alt="">
+            </div>
+            <div class="box3">
+                <img src="./images/3.jpg" alt="">
+            </div>
+            <div class="box3">
+                <img src="./images/4.png" alt="">
+            </div>
+            <div class="box3">
+                <img src="./images/5.webp" alt="">
+            </div> -->
+
+        </div>
+        <button class="left btn">
+            <</button> <button class="right btn">>
+        </button>
+
+        <ul class="pagation">
+            <!-- <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li> -->
+        </ul>
+
+
+
+    </div>
+
+    <script>
+        var arr = ["1.webp", "2.jpg", "3.jpg", "4.png"],
+            box2 = document.querySelector(".box2"),
+            box3 = document.querySelector(".box3"),
+            pagation = document.querySelector(".pagation"),
+            index = 0,
+            lis,
+            box1 = document.querySelector(".box1"),
+            timer,
+            right = document.querySelector(".right"),
+            left = document.querySelector(".left");
+
+        // 渲染 
+        function render(arr) {
+            box2.innerHTML = arr.map(function (item) {
+                return ` <div class="box3">
+                            <img src="./images/${item}" alt="">
+                        </div>`
+            }).join("")
+            html = ``
+            for (var i = 0; i < arr.length; i++) {
+                html += `<li ${i === 0 ? "class=active" : ""}></li>`
+            }
+            pagation.innerHTML = html
+            box2.style.width = arr.length * 1200 + "px"
+            lis = [...document.querySelectorAll("li")]
+        }
+        // 轮播
+        function startBanner() {
+            timer = setInterval(function () {
+                lis[index].classList.remove("active")
+                index++
+                if (index >= arr.length) {
+                    index = 0
+                }
+                box2.style.marginLeft = - index * 1200 + "px"
+                lis[index].classList.add("active")
+
+            }, 2000)
+        }
+        // 事件
+        function addEvent() {
+            box1.onmouseenter = function () {
+                clearInterval(timer)
+            }
+            box1.onmouseleave = function () {
+                startBanner()
+            }
+
+            right.onclick = function () {
+                lis[index].classList.remove("active");
+                index++;
+                if (index >= arr.length) {
+                    index = 0
+                }
+                box2.style.marginLeft = - index * 1200 + "px"
+                lis[index].classList.add("active")
+            }
+
+            left.onclick = function () {
+                lis[index].classList.remove("active")
+                index--
+                if (index < 0) {
+                    index = arr.length - 1
+                }
+                box2.style.marginLeft = - index * 1200 + "px"
+                lis[index].classList.add("active")
+            }
+        }
+        render(arr)
+        startBanner()
+        addEvent()
+
+
+
+    </script>
+</body>
+
+</html>

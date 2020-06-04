@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 500px;
+        height: 500px;
+        float: left;
+        border: 1px solid #ccc;
+        padding: 20px;
+    }
+
+    div:nth-child(2) {
+        width: 100px;
+        border: 0;
+    }
+</style>
+
+<body>
+    <button id="leftAll">全选1</button>
+    <button id="rightAll">全选2</button>
+    <div id="q">
+        <p><input type="checkbox">1</p>
+        <p><input type="checkbox">2</p>
+        <p><input type="checkbox">3</p>
+        <p><input type="checkbox">4</p>
+        <p><input type="checkbox">5</p>
+    </div>
+    <div>
+        <button id="left">左</button>
+        <button id="right">右</button>
+    </div>
+    <div id="w">
+
+    </div>
+    <script>
+        var left = document.querySelector("#left"),
+            right = document.querySelector("#right"),
+            q = document.querySelector('#q'),
+            w = document.querySelector("#w");
+
+        left.onclick = function () {
+            var inputs = [...w.querySelectorAll("input:checked")]
+            inputs.forEach(function (item) {
+                q.appendChild(item.parentNode)
+            })
+        }
+
+        right.onclick = function () {
+            var inputs = [...q.querySelectorAll("input:checked")]
+            inputs.forEach(function (item) {
+                w.appendChild(item.parentNode)
+            })
+        }
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

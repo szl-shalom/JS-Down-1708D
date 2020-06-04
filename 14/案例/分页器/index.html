@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var data = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+
+        console.log(data.length)
+
+        // 准备分页 每页显示2条 分5页
+        var pageNum = Math.ceil(data.length / 2)
+
+            // 获取第一页数据  slice(0, 2)
+            // 获取第二页数据  slice(2, 4)
+            // 获取第三页数据  slice(4, 6)
+            // 。。。。。
+            // 关键是获取起止下标
+            // 获取第十二页数据   slice(22, 24)
+            // 22 怎么来的？
+            // （页码 - 1） * 每页的数据的个数
+
+
+            // 现在有一个每页为12条数据
+
+            // 要获取第26页数据
+
+            // (26 - 1) * 12
+
+
+    </script>
+</body>
+
+</html>

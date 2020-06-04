@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            list-style: none;
+            float: left;
+            width: 120px;
+            text-align: center;
+            line-height: 35px;
+            border: 1px solid #ccc;
+        }
+
+        ul li.active {
+            background: red
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li class="active">3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <div class="con"></div>
+    </div>
+    <script>
+        var lis = [...document.querySelectorAll("li")]
+        var con = document.querySelector(".con")
+        lis.forEach(function (item, index) {
+            item.onclick = function () {
+                // 1 排除所有类名为active  // 排他思想
+                // lis.forEach(function (item) {
+                //     item.classList.remove("active")
+                // })
+                // 2 定位
+                var li = document.querySelector(".active")
+                li.classList.remove("active")
+                // 给点击的li添加类名
+                item.classList.add("active")
+                con.innerHTML = item.innerHTML
+            }
+        })
+    </script>
+</body>
+
+</html>

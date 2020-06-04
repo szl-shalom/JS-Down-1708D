@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单拖拽的效果实现</title>
+</head>
+<body>
+    <button id="drag">拖拽按钮</button>
+    <script>
+        var ele = document.getElementById('drag'),
+            draging = false,
+            mousePos = {};
+
+        ele.addEventListener('mousedown', function(e){
+           
+            // 1.设置元素可拖拽
+            draging = true;
+
+            // 2.记录下鼠标在节点上的位置
+            var rect = ele.getBoundingClientRect();
+            mousePos = {
+                left: e.pageX - rect.left,
+                top: e.pageY - rect.top
+            }
+            console.log('mousedown...', mousePos);
+            
+            // 3.修改节点位置属性为absolute
+            ele.style.position = 'absolute';
+        })
+
+        document.addEventListener('mousemove', function(e){
+            if (draging){
+                ele.style.left = (e.pageX - mousePos.left) + 'px';  
+                ele.style.top = (e.pageY -mousePos.top) + 'px';
+            }
+        })
+
+        document.addEventListener('mouseup', function(){
+            draging = false;
+        })
+
+    </script>
+</body>
+</html>

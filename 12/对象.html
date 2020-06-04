@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 什么是对象
+        // 是一组无序的数据集合
+        // 2 对象创建
+        // var obj = {} //对象字面量
+        // var obj1 = new Object() //通过构造函数
+        // 3 创建
+        var obj = {
+            name: "闫浩",
+            age: 18,
+            sex: "男",
+            sayName: function () {
+                console.log(`我是${obj.name},今年${obj.age}`)
+            }
+        }
+        // console.log(obj)
+
+        // var arr = []
+        // console.log(arr)
+        // obj.sayName()
+        // // 三年之后
+        // // obj.age = 21
+        // obj["age"] = 21
+        // console.log(obj)
+        // obj.sayName()
+
+        for(var key in obj){
+            console.log(key)
+            console.log(obj[key])
+        }
+
+
+    </script>
+</body>
+
+</html>

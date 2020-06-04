@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="box">点我</button>
+    <script>
+        // 什么是this?
+        // 指向：执行期上下文环境对象
+
+        // console.log(this)
+        // console.log(window)
+
+        // 1 直接调用函数
+        // function fn(){
+        //     console.log(this)
+        // }
+        //直接调用函数 函数内部的this指向window
+        // fn()
+
+
+        //2 事件驱动函数中的this
+        // this指向被绑定的元素
+        // var btn = document.querySelector("button")
+
+        // btn.addEventListener("click", function () {
+        //     console.log(this)
+        //     console.log(btn)
+        // })
+
+        // 3对象上面的函数
+        // 指向调用该方法的对象
+        // var obj = {
+        //     name: "123",
+        //     sayName: function () {
+        //         console.log(this)
+        //     }
+        // }
+
+        // obj.sayName()
+
+        //构造函数的this
+        // function Car() {
+        //     console.log(this)
+        // }
+
+        // new Car()
+
+
+        // 练习
+        // 1
+        // function fn1() {
+        //     function fn2() {
+        //         console.log(this);
+        //     }
+        //     fn2();
+        // }
+        // fn1();
+        // 2
+        // function fn() {
+        //     console.log(this)
+        // }
+
+        // box.onclick = function () {
+        //     fn();
+        // }
+
+        // 3
+
+        // var obj = {
+        //     x: 100,
+        //     fn: function () {
+        //         console.log(this);
+        //     }
+        // }
+
+        // var a = obj.fn
+
+
+        // a();
+        // 4
+
+        // function a() {
+        //     return {
+        //         name: 1,
+        //         b: function () {
+        //             console.log(this);
+        //         }
+        //     }
+        // }
+        // a().b();
+
+
+
+        // function fn() {
+        //     console.log(this)
+        // }
+        // // 改变this指向
+        // fn.call({})
+
+        // var obj = {
+        //     0: 111,
+        //     1: 222,
+        //     2: 333,
+        //     length: 3
+        // }
+        // var arr = [111, 222, 333]
+        // console.log(obj, arr)
+
+        // console.log(obj.length, arr.length)
+
+        // [...类数组]
+
+        // Array.from()
+
+        // console.log([].slice.call(obj))
+        // console.log(Array.prototype.slice.call(obj))
+
+        // apply
+        // var arr = [1, 2, 3, 4, 15, 6, 7, 8, 9]
+
+        // console.log(Math.max.apply(this, arr))
+
+
+        // var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        // bind
+
+    </script>
+</body>
+
+</html>

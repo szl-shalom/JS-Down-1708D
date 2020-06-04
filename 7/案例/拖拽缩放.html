@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .big-box {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+
+        .small-box {
+            position: absolute;
+            height: 8px;
+            width: 8px;
+            background: red;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+    <div class="big-box">
+        <div class="small-box">
+
+        </div>
+    </div>
+    <script>
+        var bigBox = document.querySelector(".big-box"),
+            smallBox = document.querySelector(".small-box"),
+            pos = null,
+            flag = false,
+            el;
+
+        bigBox.addEventListener("mousedown", function (e) {
+            pos = {
+                x: e.offsetX,
+                y: e.offsetY,
+            }
+            flag = true
+            el = bigBox
+        })
+
+        smallBox.addEventListener("mousedown", function (e) {
+            e.stopPropagation()
+            pos = {
+                x: bigBox.offsetLeft,
+                y: bigBox.offsetTop,
+            }
+            flag = true
+            el = smallBox
+        })
+
+
+        document.addEventListener("mousemove", function (e) {
+            if (flag) {
+                if (el === bigBox) {
+                    var x = e.pageX - pos.x,
+                        y = e.pageY - pos.y
+                    // 进行边界判断
+                    x < 0 ? x = 0 : null
+                    y < 0 ? y = 0 : null
+                    x > document.documentElement.clientWidth - bigBox.offsetWidth ? x = document.documentElement.clientWidth - bigBox.offsetWidth : null
+                    y > document.documentElement.clientHeight - bigBox.offsetHeight ? y = document.documentElement.clientHeight - bigBox.offsetHeight : null
+                    bigBox.style.left = x + "px"
+                    bigBox.style.top = y + "px"
+                } else {
+                    bigBox.style.width = e.pageX - pos.x + "px"
+                    bigBox.style.height = e.pageY - pos.y + "px"
+
+                }
+
+            }
+        })
+        document.addEventListener("mouseup", function () {
+            flag = false
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todolist</title>
+</head>
+
+<body>
+
+    <input type="text" id="data">
+    <button id="add">添加</button>
+    <span>已添加的数量<span id="count">0</span></span>
+    <span>已经完成的数量<span id="complete">0</span></span>
+    <div id="result">
+        <p>
+            <input type="checkbox" name="" id="">
+            <span>123</span>
+            <button>X</button>
+        </p>
+    </div>
+
+    <script>
+        function getDom(el) {
+            return document.querySelector(el)
+        }
+        var data = getDom("#data"),
+            add = getDom("#add"),
+            count = getDom("#count"),
+            result = getDom("#result"),
+            complete = getDom("#complete");
+
+        add.onclick = function () {
+            var p = document.createElement("p")
+            p.innerHTML = `<input type="checkbox" name="" id="">
+                            <span>${data.value}</span>
+                            <button>X</button>`
+            result.appendChild(p)
+            setCount()
+            checkbox()
+            del()
+        }
+        checkbox()
+        setCount()
+        del()
+        function setCount() {
+            count.innerHTML = result.children.length
+        }
+
+        function checkbox() {
+            var count = 0;
+            [...result.querySelectorAll("input")].forEach(function (item) {
+                if (item.checked) {
+                    count++
+                }
+                item.onclick = function () {
+                    if (item.checked) {
+                        count++
+                    } else {
+                        count--
+                    }
+                    complete.innerHTML = count;
+                }
+            })
+            complete.innerHTML = count;
+        }
+
+        function del() {
+            [...result.querySelectorAll("button")].forEach(function (item) {
+                item.onclick = function () {
+                    item.parentNode.parentNode.removeChild(item.parentNode)
+                    setCount()
+                    checkbox()
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判卷案例</title>
+    <style>
+        .container ul {
+            width: 350px;
+            padding: 15px;
+            min-height: 300px;
+            background-color: #FFFFF0;
+            margin: 20px;
+            display: block;
+            float: left;
+            border-radius: 5px;
+            border: 1px solid #bbb;
+        }
+
+        .container ul li {
+            display: block;
+            float: left;
+            width: 350px;
+            height: 35px;
+            line-height: 35px;
+            border-radius: 4px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #EED2EE;
+            margin-bottom: 10px;
+            user-select: none;
+            text-indent: 10px;
+            color: #555;
+        }
+
+        .container ul.active {
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <ul class="student">
+            <p>未判卷学生</p>
+            <li>学生A</li>
+            <li>学生B</li>
+            <li>学生C</li>
+            <li>学生D</li>
+            <li>学生E</li>
+            <li>学生F</li>
+        </ul>
+
+        <ul class="tar-ul">
+            <p>不及格</p>
+        </ul>
+
+        <ul class="tar-ul">
+            <p>及格</p>
+        </ul>
+    </section>
+
+    <script>
+        var student = document.querySelector(".student"),
+            cloneEl,
+            oldEl,
+            pos = null,
+            tarUls = [...document.querySelectorAll(".tar-ul")],
+            flag = false;
+
+        student.addEventListener("mousedown", function (e) {
+            var tar = e.target;  //获取事件源
+            if (tar.nodeName === "LI") {
+                oldEl = tar
+                cloneEl = tar.cloneNode(true) //克隆节点
+
+                // 初始化克隆节点位置
+                cloneEl.style.position = "absolute"
+                cloneEl.style.left = tar.offsetLeft + "px"
+                cloneEl.style.top = tar.offsetTop + "px"
+                cloneEl.style.backgroundColor = "yellow"
+                student.appendChild(cloneEl)
+
+                pos = {
+                    x: e.offsetX,
+                    y: e.offsetY
+                }
+                flag = true //开启开关变量
+            }
+
+        })
+
+        document.addEventListener("mousemove", function (e) {
+            if (flag) {
+                cloneEl.style.left = e.pageX - pos.x + "px"
+                cloneEl.style.top = e.pageY - pos.y + "px"
+
+                // 判断是否进入目标区域
+                tarUls.forEach(function (item) {
+                    var res = item.getBoundingClientRect()
+                    if (e.pageX > res.left && e.pageX < res.right && e.pageY > res.top && e.pageY < res.bottom) {
+                        item.classList.add("active")
+                    } else {
+                        item.classList.remove("active")
+
+                    }
+
+                })
+
+            }
+        })
+
+        document.addEventListener("mouseup", function (e) {
+            if (flag) {
+                flag = false
+                tarUls.forEach(function (item) {
+                    var res = item.getBoundingClientRect()
+                    if (e.pageX > res.left && e.pageX < res.right && e.pageY > res.top && e.pageY < res.bottom) {
+                        item.appendChild(oldEl)
+                        item.classList.remove("active")
+                    } else {
+                        console.log("不在目标区域")
+                    }
+
+                })
+                cloneEl.parentNode.removeChild(cloneEl)
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>

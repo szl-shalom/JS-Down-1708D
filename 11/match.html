@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://www.cnblogs.com/ldq678/p/9375305.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>详解正则表达式匹配方法 match() - 天天向上吧 - 博客园</title>
+    <meta property="og:description" content="在前端开发中，正则表达式是一大利器。所以我们这次就来讨论下match()方法。 match本身是JavaScript语言中字符串对象的一个方法，该方法的签名是 match([string] | [Re">
+    <link type="text/css" rel="stylesheet" href="./match_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./match_files/bundle-BuildtoWin.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./match_files/bundle-BuildtoWin-mobile.css">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/ldq678/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/ldq678/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/ldq678/wlwmanifest.xml">
+    <script src="./match_files/amp4ads-host-v0.js.下载"></script><script src="./match_files/pubads_impl_rendering_2019070801.js.下载"></script><script async="" src="./match_files/analytics.js.下载"></script><script type="text/javascript" src="./match_files/encoder.js.下载"></script><script src="./match_files/jquery-2.2.0.min.js.下载"></script>
+    <script>var currentBlogId=439154;var currentBlogApp='ldq678',cb_enable_mathjax=false;var isLogined=false;</script>
+    <script src="./match_files/blog-common.js.下载" type="text/javascript"></script>
+<link rel="preload" href="./match_files/f.txt" as="script"><script type="text/javascript" src="./match_files/f.txt"></script><script src="./match_files/pubads_impl_2019070801.js.下载" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-35/html/container.html"></head>
+<body>
+<a name="top"></a>
+
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="https://www.cnblogs.com/ldq678/"><img id="blogLogo" src="./match_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/ldq678/">天天向上吧</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/ldq678/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A%E5%90%A7">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/ldq678/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/ldq678/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 47&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 4</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+        <div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/ldq678/p/9375305.html">详解正则表达式匹配方法 match()</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>　　在前端开发中，正则表达式是一大利器。所以我们这次就来讨论下match()方法。</p>
+<p>　　match本身是JavaScript语言中字符串对象的一个方法，该方法的签名是</p>
+<p>　　<span style="color: #993300;">match([string] | [RegExp])</span></p>
+<p><span style="color: #993300;">　　<span style="color: #000000;">它的参数既可以是一个字符串，也可以是一个正则表达式。该方法绝大多数都是要使用正则表达式的，所以参数为string的情况不在本文讨论范围之内。其实参数即使是一个简单的string，其返回值也跟使用正则表达式的结果无异，而且使用正则表达式的变化比较多，用法复杂，所以我们只讨论正则的用法。</span></span></p>
+<p><span style="color: #993300;"><span style="color: #000000;">　　<strong>一、返回值问题。</strong></span></span></p>
+<p><span style="color: #993300;"><span style="color: #000000;">　　我们必须明确的是，这个方法跟其他语言是不同的。JavaScript中的match()方法的返回值是数组或者是null。如果原字符串中匹配到了正则表达式指代的子串，则返回一个数组，否则返回null。</span></span></p>
+<p><span style="color: #993300;"><span style="color: #000000;">　<strong>　二、不使用全局匹配</strong></span></span><span style="color: #993300;"><span style="color: #000000;"><strong>　</strong>　</span></span>&nbsp;</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">var</span> str = 'Today is the 186th day of 2018,I must finish these 2 projects within 21 days.'<span style="color: #000000;">;
+</span><span style="color: #0000ff;">var</span> results = str.match(/\d+/); <span style="color: #008000;">//只能</span><span style="color: #008000;">匹配字符串中出现的首个数字，未使用全局匹配符g</span>
+console.log(results);</pre>
+</div>
+<p>&nbsp;　　输出的结果是：</p>
+<p>　　<img src="./match_files/1423556-20181116222447951-944787905.png" alt=""></p>
+<p>　　再强调一次，这个例子的结果是没有使用全局匹配的正则表达式的匹配结果。说白了，就是正则表达式的末尾没跟g。由于不适用全局匹配，所以match()方法只找到源字符串中首次匹配的子串后，就立刻得到返回结果，不再比较之后剩余的部分是否还有能匹配上的内容。　</p>
+<p>　　我们可以看到，match()的结果是一个数组，该数组一共有4项。各项代表的意思如下：</p>
+<p>　　第0项：匹配到字符串</p>
+<p>　　第1项：groups：undefined，这表示当前的正则表达式没使用分组</p>
+<p>　　第2项：index表示首次匹配上的子串的起始下标。</p>
+<p>　　第3项：input，表示源字符串</p>
+<p>　　第4项：length，表示匹配到的结果个数，由于这里不使用全局匹配，只找到首次匹配项就结束了，所以匹配结果只有1个，length也就是1。</p>
+<p>　　<span style="color: #ff0000;">再次强调下，如果在正则表达式末尾不使用全局匹配符g，在本例中是无法匹配到所有的数字。反过来说就是，如果想匹配所有的符合条件的子串，就必须在正则的末尾添加全局匹配符g</span></p>
+<p>　　<span style="font-size: 16px;"><strong>三、使用全局匹配　</strong></span></p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">var</span> str = 'Today is the 186th day of 2018,I must finish these 2 projects within 21 days.'<span style="color: #000000;">;
+</span><span style="color: #0000ff;">var</span> results = str.match(/\d+/g); <span style="color: #008000;">//</span><span style="color: #008000;">匹配所有的数字，使用了全局匹配符g</span>
+console.log(results);</pre>
+</div>
+<p>　　这次我们在正则表达式的末尾添加了 g，该正则表达式的意图是，在字符串str中匹配出所有的由数字组成的子符串。</p>
+<p>　　这次结果如下：</p>
+<p>　　<img src="./match_files/1423556-20181116223312816-1168250743.png" alt=""></p>
+<p>　　可以看到，这次的返回值仍然是个数组，只不过这个数组的内容跟上边不使用全局匹配时大不相同的。由于原字符串中出现了4个数字组成的子串的情况，所以该数组中出现了4个项。length属性同样为匹配到的结果个数，这里显然是4个。</p>
+<p>　　仔细看会发现，此时返回的数组中，没有index，input这2项，不过这两项并不十分重要。</p>
+<p>　　<span style="font-size: 16px;"><strong>四、使用分组</strong></span></p>
+<p>　　使用分组时的情况比较麻烦，还要看有没有使用全局匹配，也就是有没有在正则表达式的末尾添加g</p>
+<p>　　<strong>4.1 使用分组，且不使用g</strong></p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">var</span> str = 'Today is the 286th day of 2018, the 108th Thanksgiving Day.'<span style="color: #000000;">;
+</span><span style="color: #0000ff;">var</span> results = str.match(/\d+(th)/); <span style="color: #008000;">//</span><span style="color: #008000;">匹配str中首个以数字开头，并且以th结尾的子串</span>
+console.log(results);</pre>
+</div>
+<p>　　输出结果是：</p>
+<p>　　<img src="./match_files/1423556-20181116224253261-522908958.png" alt=""></p>
+<p>　由于该正则表达式为： /\d (th) /，该表达式中使用了小括号（），在此处的作用为分组。所以match()的结果是带有分组特征的。返回的数组包含多个元素，第一个元素是以贪婪模式找到的最长的匹配，之后的元素依次为该匹配中的第一、第二、第三 ......个分组，这里只有1个分组，所以也就只匹配到1个分组结果，也就是”th"。</p>
+<p>　　假如正则表达式改成：/\d+(t)(h)/，那么匹配到的项就有3个，分别是 ： '286th' 、 't' 、'h'。我相信大家看到这里，对于分组的意义，以及如何匹配分组就已经了解了。</p>
+<p>　　数组中其它项不在解释了，参考上边的。　</p>
+<p>　　需要注意的是，这种结果是前提是：1.使用分组，2.不做全局匹配。</p>
+<p>　　<strong>4.2 使用分组，同时使用全局匹配g</strong></p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">var</span> str = 'Today is the 286th day of 2018, the 108th Thanksgiving Day.'<span style="color: #000000;">;
+</span><span style="color: #0000ff;">var</span> results = str.match(/\d+(th)/g); <span style="color: #008000;">//</span><span style="color: #008000;">匹配str中所有的以数字开头，并且以th结尾的子串</span>
+console.log(results);</pre>
+</div>
+<p>　这次的代码，跟上次的代码区别只有一点，就是正则表达式末尾多了个g，表示全局匹配。</p>
+<p>　　结果也是大不相同的。</p>
+<p>　　<img src="./match_files/1423556-20181116224942223-1729935665.png" alt=""></p>
+<p>　　结果说明了一切，当正则中使用全局匹配符g，即使有分组的存在，在匹配结果中也只有匹配到的最长的，那些分组的子匹配都不见了。</p>
+<p>　　具体表现为：这次匹配到的结果是 ’286th‘ 和 ‘’108th’ ，前一个例子中使用分组是出线的那个单独的分组子匹配&nbsp; ‘th’，这一项不见了。我们把这个现象理解为，只要使用了全局匹配模式，那么match()将只返回“贪婪”的匹配结果，这里的“贪婪”指的就是只招那个最长的能匹配上的字符串，至于分组项，就忽略了。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/ldq678/category/1263245.html" target="_blank">JavaScript</a></div>
+<div id="EntryTag">标签: <a href="https://www.cnblogs.com/ldq678/tag/match/">match</a>, <a href="https://www.cnblogs.com/ldq678/tag/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(9375305,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;08e32fb0-65d4-475e-a245-08d5d1f04a4a&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./match_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./match_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/ldq678/" target="_blank"><img src="./match_files/20181008134451.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/ldq678/">天天向上吧</a><br>
+            <a href="https://home.cnblogs.com/u/ldq678/followees">关注 - 2</a><br>
+            <a href="https://home.cnblogs.com/u/ldq678/followers">粉丝 - 3</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;08e32fb0-65d4-475e-a245-08d5d1f04a4a&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(9375305,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(9375305,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/ldq678/p/9235625.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/ldq678/p/9235625.html" title="发布于2018-06-27 19:10">AJAX（六）jsonp原理详解</a><br><a href="https://www.cnblogs.com/ldq678/p/9381327.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/ldq678/p/9381327.html" title="发布于2018-07-28 18:17">详解JavaScript中的__proto__和prototype</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2018-07-27 01:31</span> <a href="https://www.cnblogs.com/ldq678/">天天向上吧</a> 阅读(<span id="post_view_count">3018</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=9375305" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/ldq678/p/9375305.html#" onclick="AddToWz(9375305);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=439154,cb_entryId=9375305,cb_blogApp=currentBlogApp,cb_blogUserGuid='08e32fb0-65d4-475e-a245-08d5d1f04a4a',cb_entryCreatedDate='2018/7/27 1:31:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=false;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/ldq678/p/9375305.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/ldq678/p/9375305.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-工控&#39;)">【推荐】超50万C++/C#源码: 大型实时仿真组态图形源码</a><br><a href="https://www.grapecity.com.cn/developer/spreadjs?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-SpreadJS&#39;)">【前端】SpreadJS表格控件，可嵌入系统开发的在线Excel</a><br><a href="https://www.huodongxing.com/event/6501634834100" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-魔程&#39;)">【活动】“魔程”社区训练营技术沙龙——React 前端开发专场</a><br><a href="https://gitee.com/enterprises?from=bky-1" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-gitee&#39;)">【推荐】码云企业版，高效的企业级软件协作开发管理平台</a><br><a href="https://q.cnblogs.com/" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-博问&#39;)">【推荐】程序员问答平台，解决您开发中遇到的技术难题</a><br></div>
+<div id="opt_under_post"></div>
+<script async="async" src="./match_files/gpt.js.下载"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+        googletag.defineSlot('/1090369/C1', [300, 250], 'div-gpt-ad-1546353474406-0').addService(googletag.pubads());
+        googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;" data-google-query-id="CKm9nofXueMCFRKGlgodOmQI7w"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1" data-load-complete="true" src="./match_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_news"><div class="recomm-block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/milantgh/p/3654983.html" target="_blank" onclick="clickRecomItmem(3654983)">JavaScript之match()方法讲解</a><br>·  <a href="https://www.cnblogs.com/heshan1992/p/6259171.html" target="_blank" onclick="clickRecomItmem(6259171)">正则表达式中的exec和match方法的区别</a><br>·  <a href="https://www.cnblogs.com/liujiale/p/5358491.html" target="_blank" onclick="clickRecomItmem(5358491)">JavaScript match() 方法</a><br>·  <a href="https://www.cnblogs.com/cnundefined/p/7048490.html" target="_blank" onclick="clickRecomItmem(7048490)">正则表达式的方法</a><br>·  <a href="https://www.cnblogs.com/daixixi/p/9302752.html" target="_blank" onclick="clickRecomItmem(9302752)">简单正则表达式笔记</a><br></div></div>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="CI6GnYfXueMCFRKGlgodOmQI7w"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none; width: 468px; height: 60px;"></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/628338/" target="_blank">手机不止包含了46种化学元素还有可以做实验的APP……</a><br> ·  <a href="https://news.cnblogs.com/n/628337/" target="_blank">想象38万公里之外的世界</a><br> ·  <a href="https://news.cnblogs.com/n/628336/" target="_blank">科大讯飞完成1.08亿股定增，国家级产业基金入股</a><br> ·  <a href="https://news.cnblogs.com/n/628335/" target="_blank">广州向小学生提供配有北斗导航的智能手表</a><br> ·  <a href="https://news.cnblogs.com/n/628334/" target="_blank">美团申请导航电子地图甲级资质未过？回应：消息不实</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+ if(enablePostBottom()) {
+    codeHighlight();
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverT2();
+    deliverC1();
+    deliverC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);  
+}
+</script>
+</div>
+
+    
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/ldq678/">天天向上吧</a><br>园龄：<a href="https://home.cnblogs.com/u/ldq678/" title="入园时间：2018-06-16">1年1个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/ldq678/followers/">3</a><br>关注：<a href="https://home.cnblogs.com/u/ldq678/followees/">2</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;08e32fb0-65d4-475e-a245-08d5d1f04a4a&#39;)">+加关注</a></div><script>getFollowStatus('08e32fb0-65d4-475e-a245-08d5d1f04a4a')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/06/01&#39;);return false;">&lt;</a></td><td align="center">2019年7月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/08/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td class="CalWeekendDay" align="center">6</td></tr><tr><td class="CalWeekendDay" align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center"><a href="https://www.cnblogs.com/ldq678/archive/2019/07/12.html"><u>12</u></a></td><td class="CalWeekendDay" align="center">13</td></tr><tr><td class="CalWeekendDay" align="center">14</td><td align="center">15</td><td class="CalTodayDay" align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td class="CalWeekendDay" align="center">20</td></tr><tr><td class="CalWeekendDay" align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalWeekendDay" align="center">27</td></tr><tr><td class="CalWeekendDay" align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td></tr><tr><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td><td class="CalOtherMonthDay" align="center">10</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/ldq678/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/ldq678/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/ldq678/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/ldq678/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/ldq678/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/ldq678/tag/AJAX/">AJAX</a>(6)</li><li><a href="https://www.cnblogs.com/ldq678/tag/.NET/">.NET</a>(5)</li><li><a href="https://www.cnblogs.com/ldq678/tag/%E5%8E%9F%E7%94%9FJavascript/">原生Javascript</a>(5)</li><li><a href="https://www.cnblogs.com/ldq678/tag/vue/">vue</a>(3)</li><li><a href="https://www.cnblogs.com/ldq678/tag/%E4%BD%9C%E7%94%A8/">作用</a>(2)</li><li><a href="https://www.cnblogs.com/ldq678/tag/webpack/">webpack</a>(2)</li><li><a href="https://www.cnblogs.com/ldq678/tag/webpack4/">webpack4</a>(2)</li><li><a href="https://www.cnblogs.com/ldq678/tag/jQuery/">jQuery</a>(2)</li><li><a href="https://www.cnblogs.com/ldq678/tag/%E9%97%AD%E5%8C%85/">闭包</a>(2)</li><li><a href="https://www.cnblogs.com/ldq678/tag/ES6/">ES6</a>(2)</li><li><a href="https://www.cnblogs.com/ldq678/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/ldq678/category/1246297.html">.NET(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/ldq678/category/1238409.html">AJAX(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/ldq678/category/1391248.html">ECMAScript6(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="https://www.cnblogs.com/ldq678/category/1263245.html">JavaScript(15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="https://www.cnblogs.com/ldq678/category/1312050.html">jQuery(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="https://www.cnblogs.com/ldq678/category/1324993.html">Vue.js(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="https://www.cnblogs.com/ldq678/category/1387154.html">webpack(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="https://www.cnblogs.com/ldq678/category/1285322.html">杂记(5)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="https://www.cnblogs.com/ldq678/archive/2019/07.html">2019年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="https://www.cnblogs.com/ldq678/archive/2019/06.html">2019年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="https://www.cnblogs.com/ldq678/archive/2019/05.html">2019年5月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="https://www.cnblogs.com/ldq678/archive/2019/04.html">2019年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="https://www.cnblogs.com/ldq678/archive/2019/02.html">2019年2月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="https://www.cnblogs.com/ldq678/archive/2019/01.html">2019年1月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="https://www.cnblogs.com/ldq678/archive/2018/12.html">2018年12月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="https://www.cnblogs.com/ldq678/archive/2018/11.html">2018年11月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="https://www.cnblogs.com/ldq678/archive/2018/10.html">2018年10月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="https://www.cnblogs.com/ldq678/archive/2018/09.html">2018年9月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="https://www.cnblogs.com/ldq678/archive/2018/08.html">2018年8月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="https://www.cnblogs.com/ldq678/archive/2018/07.html">2018年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="https://www.cnblogs.com/ldq678/archive/2018/06.html">2018年6月 (6)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/ldq678/p/10295870.html#4297741">1. Re:详解webpack4打包--新手入门（填坑）</a></li>
+        <li class="recent_comment_body">@阴天。不必客气，赠人玫瑰，手有余香。话说前端的技术坑特别多，有什么问题欢迎来问我。你之后学习babel还会遇到更多坑，因为你i看的视频都是老版本...</li>
+        <li class="recent_comment_author">--天天向上吧</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/ldq678/p/10295870.html#4292059">2. Re:详解webpack4打包--新手入门（填坑）</a></li>
+        <li class="recent_comment_body">太感谢了，看的视频是webpack3的，找了一个晚上bug，看了你这篇终于解决了，感谢感谢</li>
+        <li class="recent_comment_author">--阴天。</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/ldq678/p/10917355.html#4284429">3. Re:vue-preview用法详解</a></li>
+        <li class="recent_comment_body">不好意思，刚看到你的问题。1.这个插件会生成1个嵌套很深的结构，你可以通过chrome的开发者工具，去审查运行时的页面结构。标签是H5增加的标签，可以直接对其设置样式，与其他标签无异。我贴出来我的代码......</li>
+        <li class="recent_comment_author">--天天向上吧</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/ldq678/p/10917355.html#4278681">4. Re:vue-preview用法详解</a></li>
+        <li class="recent_comment_body">请问小图的样式如何修改</li>
+        <li class="recent_comment_author">--czchelloword</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/ldq678/p/10291824.html">1. 解决“npm不是内部或外部命令“(3895)</a></li><li><a href="https://www.cnblogs.com/ldq678/p/9375305.html">2. 详解正则表达式匹配方法 match()(3018)</a></li><li><a href="https://www.cnblogs.com/ldq678/p/9902684.html">3. jQuery清空标签内容--防止内存泄露(1894)</a></li><li><a href="https://www.cnblogs.com/ldq678/p/9532668.html">4. 为什么开发移动端web不使用jQuery(1433)</a></li><li><a href="https://www.cnblogs.com/ldq678/p/9666914.html">5. 浅析jQuery基本结构($实现原理)(867)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/ldq678/p/10917355.html">1. vue-preview用法详解(2)</a></li><li><a href="https://www.cnblogs.com/ldq678/p/10295870.html">2. 详解webpack4打包--新手入门（填坑）(2)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/ldq678/p/10448374.html">1. 详解babel8.X版本用法填坑（babel-loader ， @babel/core , @babel/plugin-stransform-runtime, @babel/preset-env）(1)</a></li><li><a href="https://www.cnblogs.com/ldq678/p/10295870.html">2. 详解webpack4打包--新手入门（填坑）(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2019 天天向上吧
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+
+</body></html>

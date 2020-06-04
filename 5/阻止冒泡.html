@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#red {
+			position: relative;
+			background: red;
+			height: 500px;
+			width: 500px;
+		}
+
+		#green {
+			position: relative;
+			width: 300px;
+			height: 300px;
+			left: 500px;
+			background: green;
+		}
+
+		#blue {
+
+			position: relative;
+			width: 150px;
+			height: 150px;
+			left: 300px;
+			background: blue;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="red">
+		<div id="green">
+			<div id="blue">
+
+			</div>
+		</div>
+	</div>
+	<script>
+		var red = document.querySelector("#red")
+		var green = document.querySelector("#green")
+		var blue = document.querySelector("#blue")
+
+		red.onclick = function () {
+			console.log(1)
+		}
+		green.onclick = function () {
+			console.log(2)
+		}
+		blue.onclick = function (e) {
+			e = e || window.event
+
+			// e.stopPropagation()
+
+			e.cancelBubble = true
+			console.log(3)
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		ul {
+			height: 50px;
+		}
+
+		ul li {
+			width: 100px;
+			height: 40px;
+			float: left;
+			padding: 0 5px;
+			line-height: 50px;
+			text-align: center;
+			border-bottom: 1px solid #ccc;
+		}
+
+		#bottom {
+			clear: both;
+		}
+
+		ul li span {
+			padding: 0 5px;
+			text-align: center;
+		}
+
+		button {
+			display: inline-block;
+			width: 200px;
+			height: 45px;
+			color: white;
+			background: green;
+		}
+
+		button.col {
+			background: #ccc;
+			color: black;
+		}
+
+		ul li.bor {
+			border: 1px solid #ccc;
+			border-bottom: none;
+		}
+
+		ul li span:hover {
+			background: orange;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+
+		<ul class="ul">
+			<li class="bor">网络设置<span>X</span></li>
+			<li>用户管理<span>X</span></li>
+			<li>权限分配<span>X</span></li>
+			<li>商品管理<span>X</span></li>
+			<li>订单管理<span>X</span></li>
+		</ul>
+
+		<div id="class">
+			<p id="content">内容1</p>
+			<button id="add">新增选项</button>
+			<button id="remove">删除:商品管理</button>
+			<button>切换到:用户管理</button>
+		</div>
+	</div>
+
+	<script>
+		var ul = document.querySelector(".ul"),
+			content = document.querySelector("#content"),
+			add = document.querySelector("#add")
+		// 封装删除方法
+		function delate() {
+			var spans = [...ul.querySelectorAll("span")]
+			spans.forEach(function (item) {
+				item.onclick = function () {
+					// 父元素.removeChild(被删除的元素)
+					item.parentNode.parentNode.removeChild(item.parentNode)
+				}
+			})
+		}
+		delate()
+		// 封装Tab切换 
+		function tab() {
+			var lis = [...ul.querySelectorAll("li")]
+			lis.forEach(function (item) {
+				item.onclick = function () {
+					// 排他思想
+					lis.forEach(function (item) {
+						item.classList.remove("bor")
+					})
+					item.classList.add("bor")
+					content.innerHTML = item.firstChild.nodeValue
+				}
+			})
+		}
+		tab()
+
+		// 封装添加节点
+		function addEl() {
+			// <li>订单管理<span>X</span></li>
+			var li = document.createElement("li")
+			li.innerHTML = "我是新内容"
+			var span = document.createElement("span")
+			span.innerHTML = "x"
+			li.appendChild(span)
+			ul.appendChild(li)
+
+		}
+		add.onclick = function () {
+			addEl()
+			delate()
+			tab()
+		}
+
+
+	</script>
+</body>
+
+</html>

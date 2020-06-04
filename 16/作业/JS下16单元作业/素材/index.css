@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+button {
+    border: .5px solid #ccc;
+    background: #ccc;
+    padding: 2px 6px;
+}
+
+.wrap {
+    width: 800px;
+    margin: 50px auto;
+}
+
+.content {
+    border: 1px solid #ccc;
+    height: 35px;
+}
+
+.content span {
+    padding: 0 10px;
+    line-height: 35px;
+}
+
+.mask {
+    background: rgba(0, 0, 0, .3);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.mask.active {
+    display: block;
+}
+
+.box {
+    position: fixed;
+    width: 800px;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    background: white;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    display: none;
+}
+
+.box.active {
+    display: block;
+}
+
+
+.box .con .every {
+    line-height: 35px;
+    height: 35px;
+    position: relative;
+    float: left;
+    left: 0;
+    padding: 0px 20px;
+}
+
+.box .con .every.active {
+    /* background: skyblue; */
+    z-index: 999;
+}
+
+
+.box .con .every>div {
+    width: 200px;
+    display: none;
+    position: absolute;
+    background: skyblue;
+}
+
+.box .con .every div ul li {
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+.box .con .every>div.active {
+    display: block;
+    z-index: 999;
+}
+
+
+
+.box .footer {
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+}
+
+.box .footer button {
+    margin-right: 20px;
+}
+
+.clear::after {
+    clear: both;
+    height: 0;
+    content: "";
+    display: block;
+    opacity: 0;
+    line-height: 0;
+}

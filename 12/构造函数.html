@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数和构造函数的区别
+        // 在调用上构造函数需要用到new 关键字
+        // 名称上 大小驼峰
+
+
+
+        function Car(color, lt) {
+
+            this.name = "兰博基尼"
+            this.color = color
+            this.lt = lt
+
+        }
+
+        console.log(new Car("红色", "炫酷的轮胎"))
+        console.log(new Car("蓝色", "低调的轮胎"))
+
+
+        // new 四部曲
+        // 1、创建对象
+        // 2、修改对象__proto__指向构造函数原型prototype
+        // 3、执行构造函数，构造函数this指向 创建出来的对象
+        // 4、检测是第三部的结果是否返回引用数据类型 是返回第三部的结果 否返回创建出来的对象
+    </script>
+</body>
+
+</html>

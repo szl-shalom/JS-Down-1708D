@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="nav">
+            淘宝网
+        </div>
+        <div class="header">
+            导航
+        </div>
+        <div class="banner">
+            轮播图
+        </div>
+        <div class="floor">
+            <ul class="floor-ul">
+                <!-- <li><img src="images/1.jpg" alt=""></li>
+                <li><img src="images/2.jpg" alt=""></li>
+                <li><img src="images/3.jpg" alt=""></li>
+                <li><img src="images/4.jpg" alt=""></li>
+                <li><img src="images/5.jpg" alt=""></li>
+                <li><img src="images/6.jpeg" alt=""></li>
+                <li><img src="images/7.png" alt=""></li>
+                <li><img src="images/8.jpeg" alt=""></li>
+                <li><img src="images/9.jpg" alt=""></li>
+                <li><img src="images/10.jpg" alt=""></li> -->
+            </ul>
+        </div>
+
+
+    </div>
+
+
+    <div class="floor-fixed">
+        <ul class="floor-fixed-ul">
+            <!-- <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li> -->
+        </ul>
+    </div>
+
+    <script src="./js/index.js"></script>
+
+    <script>
+        new Floor({
+            box: ".wrap",
+            floor:".floor-fixed",
+            data:["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpeg","7.png","8.jpeg","9.jpg","10.jpg",]
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 2000px;
+            height: 2000px;
+        }
+
+        .small-box {
+            background: red;
+            height: 500px;
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 200px;
+        }
+
+        .big-box {
+            position: relative;
+            border: 1px solid #ccc;
+            width: 1000px;
+            height: 1000px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big-box">
+        <div class="small-box"></div>
+    </div>
+    <script>
+
+
+        // var div = document.querySelector(".small-box")
+        //  包含自身宽高 + padding  + border  *****************
+        // console.log(div.offsetWidth)
+        // console.log(div.offsetHeight)
+
+        // // 包含自身宽高 + padding
+        // console.log(div.clientHeight)
+        // console.log(div.clientWidth)
+
+        // // 包含自身宽高 + padding
+        // console.log(div.scrollWidth)
+        // console.log(div.scrollHeight)
+
+
+        // console.log(div.style.height)
+        // 获取css属性集合
+        // console.log(getComputedStyle(div).width)
+
+        // 元素.offsetLeft 元素到就近的第一个开启定位的父元素的距离  一个父元素开启定位的都没有  那么就是相对于body
+        console.log(div.offsetLeft)
+
+        console.dir(div)
+    </script>
+</body>
+
+</html>

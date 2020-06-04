@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .active {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div>上一个兄弟</div>
+    <div class="el">
+        <span>第一个孩子</span>
+        <h2>123</h2>
+        <h3>最后一个孩子</h3>
+
+    </div>
+    <div>下一个兄弟</div> -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li class="del">删除</li>
+        <h3>124345</h3>
+        <li>4</li>
+        <li>5</li>
+        <li class="add">添加</li>
+        <span>124234</span>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+
+        <div>123</div>
+        <li class="add">添加</li>
+        <li class="add">添加</li>
+        <li class="add">添加</li>
+        <li class="add">添加</li>
+        <li class="add">添加</li>
+    </ul>
+    <script>
+        // var el = document.querySelector(".el"),
+        //     h2 = document.querySelector("h2")
+        // // DOM关系
+        // console.log(el.previousElementSibling)
+        // console.log(el.nextElementSibling)
+        // console.log(el.firstElementChild)
+        // console.log(el.lastElementChild)
+        // console.log(el.children)
+        // console.log(el.parentNode)
+        // // DOM增删改
+        // var h1 = document.createElement("h1")
+        // h1.innerHTML = "我是新添加的"
+
+        // // el.appendChild(h1)
+        // // el.replaceChild(h1, h2)
+        // // h2.parentNode.removeChild(h2)
+
+        // // 操作类名
+        // el.classList.add("active")
+
+        // el.classList.remove("active")
+        // // 存在就删除   不存在就添加
+        // el.classList.toggle("active")
+
+        // el.classList.toggle("active")
+
+        // console.log(el.classList.contains("active"))
+
+        // el.classList.toggle("active")
+
+        // console.log(el.classList.contains("active"))
+
+        // 事件委托：利用事件冒泡原理，用一个事件处理程序来管理同一类型的事件
+
+        // var ul = document.querySelector("ul")
+
+        // ul.addEventListener("click", function (e) {
+        //     var tar = e.target; //获取事件源
+
+        //     // if (tar.nodeName === "LI") {
+        //     //     console.log(tar.innerHTML)
+        //     // }
+
+        //     if(tar.className === "del"){
+        //         console.log("删除")
+        //     }
+
+        //     if(tar.className === "add"){
+        //         console.log("添加")
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

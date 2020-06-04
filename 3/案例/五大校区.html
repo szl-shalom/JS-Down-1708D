@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			list-style: none;
+		}
+
+		#box {
+			width: 400px;
+			height: 400px;
+			background: #eee;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div id="box">
+
+	</div>
+
+	<ul>
+		<li><input type="checkbox"><label for="">上海</label></li>
+		<li><input type="checkbox"><label for="">北京上地</label></li>
+		<li><input type="checkbox"><label for="">北京滨河</label> </li>
+		<li><input type="checkbox"><label for="">天津</label></li>
+		<li><input type="checkbox"><label for="">宿迁</label> </li>
+	</ul>
+
+	<script>
+		var inputs = [...document.querySelectorAll("input")] //获取
+		var box = document.querySelector("#box")
+		// 循环遍历
+		inputs.map(function (item, index) {
+			// 添加点击事件
+			item.onclick = function () {
+				// 判断状态
+				if (item.checked) {
+					// 选中状态
+					var span = document.createElement("span")
+					span.innerHTML = item.nextElementSibling.innerHTML
+					// 设置自定义属性
+					span.setAttribute("ind", index)
+					box.appendChild(span)
+				} else {
+					// 非选中状态	
+					var spans = [...document.querySelectorAll("span")]
+					spans.forEach(function (el) {
+						// 找到自定义下标
+						if (+el.getAttribute("ind") === index) {
+							el.parentNode.removeChild(el)
+						}
+					})
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>

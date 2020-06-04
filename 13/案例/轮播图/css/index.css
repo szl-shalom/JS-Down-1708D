@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    width: 1200px;
+    height: 600px;
+    margin: 150px auto;
+}
+
+.swiper-container {
+    width: 1200px;
+    height: 600px;
+    position: relative;
+}
+
+.swiper-wrapper {
+    width: 1200px;
+    height: 600px
+}
+
+.swiper-slide {
+    position: absolute;
+    width: 1200px;
+    height: 600px;
+    opacity: 0;
+    transition: all 1s
+}
+
+.swiper-slide.active {
+    opacity: 1;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.btn {
+    position: absolute;
+    top: 50%;
+    height: 220px;
+    width: 80px;
+    text-align: center;
+    line-height: 220px;
+    margin-top: -110px;
+    border: 0;
+    background-color: rgba(0, 0, 0, .3);
+    font-size: 36px;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.pagation {
+    position: absolute;
+    bottom: 10px;
+    height: 35px;
+    width: 100%;
+}
+
+.pagation ul {
+    width: 100%;
+    text-align: center;
+}
+
+.pagation ul li {
+    list-style: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+    background: #ccc;
+}
+
+.pagation ul li.active {
+    background: red;
+}

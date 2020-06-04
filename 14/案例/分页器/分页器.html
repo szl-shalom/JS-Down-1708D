@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+            每页显示的数据个数
+            <select name="" id="pageDom">
+                <option value="3">3</option>
+                <option value="6">6</option>
+                <option value="9">9</option>
+            </select>
+            排序
+            <select name="" id="sort">
+                <option value="">请选择排序</option>
+                <option value="1">按价钱排序</option>
+            </select>
+            搜索
+            <input type="text" class="search">
+        </div>
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>名称</th>
+                        <th>单价</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="" alt="">
+                        </td>
+                        <td>
+                            苹果
+                        </td>
+                        <td>
+                            5
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            <button class="prev">上一页</button>
+            <div class="pagation">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+            </div>
+            <button class="next">下一页</button>
+            <input type="text" class="goCode">
+            <button class="go">点击跳转</button>
+        </div>
+    </div>
+    <script src="./data.js"></script>
+    <!-- <script src="./index.js"></script> -->
+    <script src="./myIndex.js"></script>
+    <script>
+        new Pagation({
+            el: ".wrap",
+            data: data
+        })
+    </script>
+</body>
+
+</html>

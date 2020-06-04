@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 120px;
+            height: 20px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入账户" class="user">
+    <input type="text" placeholder="请输入密码" class="pwd">
+    <input type="text" placeholder="验证码" class="userCode">
+    <span class="code"></span>
+    <button class="getCode">获取验证码</button>
+    <button class="submit">登录</button>
+
+    <script>
+        var submit = document.querySelector(".submit"),
+            user = document.querySelector(".user"),
+            pwd = document.querySelector(".pwd"),
+            code = document.querySelector(".code"),
+            getCode = document.querySelector(".getCode"),
+            userCode = document.querySelector(".userCode")
+
+
+        // 模拟数据
+        var data = [{
+            username: "zs",
+            password: "123"
+        }, {
+            username: "ls",
+            password: "456"
+        }, {
+            username: "ww",
+            password: "789"
+        }]
+
+        // 添加点击事件
+        submit.onclick = function () {
+            var userValue = user.value,
+                pwdValue = pwd.value;
+            // 判断账户是否正确
+            var flag = data.some(function (item) {
+                return item.username === userValue && item.password === pwdValue
+            })
+            // 判断验证码是否正确
+            var flag1 = userCode.value === code.innerHTML
+
+            if (flag && flag1){
+                // 准备进行跳转 并且传输数据
+                location.href = `周考1数据.html?${userValue}`
+            }else{
+                alert("很遗憾！！！")
+            }
+        }
+
+        getCode.onclick = function () {
+            code.innerHTML = Math.random().toString(36).substr(2, 4)
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

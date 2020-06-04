@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.wrap {
+			position: absolute;
+			bottom: 20px;
+			width: 100%;
+			text-align: center;
+		}
+
+		img {
+			width: 64px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<img src="./img/1.png" alt="">
+		<img src="./img/2.png" alt="">
+		<img src="./img/3.png" alt="">
+		<img src="./img/4.png" alt="">
+		<img src="./img/5.png" alt="">
+	</div>
+
+	<script>
+		var wrap = document.querySelector(".wrap"),
+			imgs = document.querySelectorAll("img");
+		// 封装获取两点之间距离的方法
+		function getDis(x1, y1, x2, y2) {
+			return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
+		}
+		// 获取中心店坐标
+		function getImageCenter(oimg) {
+			return {
+				x: oimg.offsetLeft + oimg.offsetWidth / 2 + wrap.offsetLeft,
+				y: oimg.offsetTop + oimg.offsetHeight / 2 + wrap.offsetTop
+			}
+		}
+		// 
+
+		document.addEventListener("mousemove", function (e) {
+			imgs.forEach(function (item) {
+				var a = getImageCenter(item)
+				var b = getDis(e.pageX, e.pageY, a.x, a.y)
+				if (b <= 100) {
+					item.style.width = (100 - b) * 64 / 100 + 64 + "px"
+				}
+			})
+			// var a = getImageCenter(imgs[0])
+			// var b = getDis(e.pageX, e.pageY, a.x, a.y)
+			// if (b <= 100) {
+			// 	imgs[0].style.width = (100 - b) * 64 / 100 + 64 + "px"
+			// }
+		})
+	</script>
+</body>
+
+</html>

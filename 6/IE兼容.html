@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="123">123</a>
+    <script>
+
+
+        // 添加事件兼容 2级
+        // document.addEventListener("click", function () {
+        //     console.log(1)
+        // })
+
+        // document.attachEvent("onclick", function () {
+        //     console.log(1)
+        // })
+
+        // function addEvent(el, type, fn) {
+        //     if (el.addEventListener) {
+        //         el.addEventListener(type, fn)
+        //     } else if (el.attachEvent) {
+        //         el.attachEvent("on" + type, fn)
+        //     }
+        // }
+
+        // addEvent(document, "click", function () {
+        //     console.log(1)
+        // })
+        // 事件对象兼容
+
+
+
+        // 事件源兼容
+
+        // 阻止默认事件
+        var a = document.querySelector("a")
+        a.onclick = function (e) {
+            e = e || window.event
+            // e.stopPropagation
+            // e.preventDefault()  //阻止默认事件
+            // e.returnValue = false  // IE 阻止默认事件
+        }
+
+        // 阻止冒泡
+
+
+    </script>
+</body>
+
+</html>

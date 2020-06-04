@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+
+<button>点击开始倒计时</button>
+
+<body>
+    <script>
+        var btn = document.querySelector("button")
+
+        console.log(btn)
+        var count = 5
+
+        btn.onclick = function () {
+            btn.disabled = true
+            var timer = setInterval(function () {
+                count--
+                btn.innerHTML = count + "秒之后结束"
+                if (count < 0) {
+                    btn.innerHTML = "点击开始倒计时"
+                    clearInterval(timer)
+                    count = 5
+                    btn.disabled = false
+                }
+            }, 1000)
+        }
+    </script>
+</body>
+
+</html>

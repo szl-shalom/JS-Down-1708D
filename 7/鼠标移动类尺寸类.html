@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* body {
+            height: 2000px;
+            width: 2000px;
+        } */
+
+        div {
+            height: 500px;
+            width: 500px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+    <script>
+        // document.addEventListener("mousemove", function (e) {
+        //     console.log(e)
+
+        //     // e.pageX || e.pageY   鼠标到页面的距离   **********************
+
+        //     // e.clientX || e.clientY 鼠标距离可视区域的距离
+
+        //     // document.body.innerHTML = `${e.pageX},${e.pageY}`
+        // })
+
+        var div = document.querySelector("div")
+
+        div.addEventListener("mousedown", function (e) {
+            // 获取鼠标点到元素的上边距和左边距
+            console.log(e.offsetX, e.offsetY)
+        })
+
+    </script>
+</body>
+
+</html>

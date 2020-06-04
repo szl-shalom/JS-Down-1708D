@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		#box {
+			width: 300px;
+			height: 300px;
+			background: red;
+		}
+	</style>
+</head>
+
+<body style='width:2000px;height:2000px;'>
+	<div id='box'></div>
+	<script>
+		var box = document.querySelector('#box');
+		/*box.onclick = function(event){
+			var e = event || window.event; //事件对象兼容
+			console.log(e.offsetX);
+			console.log(e.offsetY);
+		}
+		*/
+		// document.onclick = function (event) {
+		// 	var e = event || window.event;
+		// 	console.log(e.clientX);
+		// 	console.log(e.pageX)
+		// 	console.log(document.documentElement.scrollLeft)
+		// 	// console.log(e.clientY);
+
+		// 	console.log(e.pageX === e.clientX + document.documentElement.scrollLeft);
+		// 	console.log(e.pageY === e.clientY + document.documentElement.scrollTop);
+
+
+		// 	//console.log(document.documentElement.scrollLeft);
+		// 	//console.log(document.documentElement.scrollTop);
+		// }
+	//console.log(document.documentElement)
+
+
+	//事件对象.offsetX  ==> 距离元素的左边距
+	//事件对象.offsetY  ==> 距离元素的上边距
+
+	//事件对象.clientX  ==> 距离可视区的左边距 
+	//事件对象.clientY  ==> 距离可视区的上边距
+
+	//事件对象.pageX    ==> 距离页面的左边距 
+	//事件对象.pageY    ==> 距离页面的上边距
+
+	//scrollLeft  滚动条滚动的左边距 
+	//scrollTop   滚动条滚动的上边距
+
+
+
+
+
+	</script>
+</body>
+
+</html>

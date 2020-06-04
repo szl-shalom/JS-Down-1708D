@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .app {
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .app>div {
+            float: left;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .leftBox {
+            width: 240px;
+            height: 112.5px;
+        }
+
+        .leftBox img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .moveBox {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 50px;
+            background-color: #fff;
+            opacity: 0.5;
+            cursor: move;
+        }
+
+        .rightBox {
+            width: 400px;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .rightBox img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <div class="leftBox">
+            <img src="./images/ad_4.jpg" alt="">
+            <div class="moveBox"></div>
+        </div>
+        <div class="rightBox">
+            <img src="./images/ad_4.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            // 获取必要的dom节点
+            var oLeftBox = document.getElementsByClassName('leftBox')[0];
+            var oMoveBox = document.getElementsByClassName('moveBox')[0];
+            var oBigImg = document.getElementsByClassName('rightBox')[0].getElementsByTagName('img')[0];
+
+            // 求出比例
+            var bl = oBigImg.offsetWidth / oLeftBox.offsetWidth;
+            // 控制小遮罩移动
+            oLeftBox.onmousemove = function (ev) {
+                // 求遮罩层所在的位置
+                var x = ev.clientX - oLeftBox.offsetLeft - oMoveBox.offsetWidth / 2;
+                var y = ev.clientY - oLeftBox.offsetTop - oMoveBox.offsetHeight / 2;
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                if (x > oLeftBox.offsetWidth - oMoveBox.offsetWidth) {
+                    x = oLeftBox.offsetWidth - oMoveBox.offsetWidth;
+                }
+                if (y > oLeftBox.offsetHeight - oMoveBox.offsetHeight) {
+                    y = oLeftBox.offsetHeight - oMoveBox.offsetHeight;
+                }
+                oMoveBox.style.left = x + 'px';
+                oMoveBox.style.top = y + 'px';
+                // 控制大图的移动
+                oBigImg.style.left = -bl * x + 'px';
+                oBigImg.style.top = -bl * y + 'px';
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

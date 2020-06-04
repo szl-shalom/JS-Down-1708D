@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="car">
+        <div class="boo">
+            <div>
+                <input type="checkbox" name="" class="checkList">
+                <span>海澜之家</span>
+                <ul>
+                    <li>
+                        <input type="checkbox" name="" class="checkOne">
+                        <span>短裤</span>
+                        单价<span>59</span>
+                        <button class="reduce">-</button>
+                        <input type="text" value="1">
+                        <button class="add">+</button>
+                        小计<b>59</b>
+                        <button class="delOne">删除</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <input type="checkbox" name="" class="checkAll">全选
+        <button class="delAll">批量删除</button>
+        <p>总价<i></i></p>
+    </div>
+
+
+
+
+    <script src="./mock.js"></script>
+    <script src="./car.js"></script>
+
+    <script>
+        // 开启购物车
+        new Car({
+            data: data
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
